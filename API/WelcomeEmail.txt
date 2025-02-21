@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to HealthTriage</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        .container { max-width: 600px; margin: 20px auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        .header { background-color: #4CAF50; color: #fff; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
+        .content { padding: 20px; color: #333; }
+        .content img { max-width: 24px; height: auto; vertical-align: middle; margin-right: 10px; }
+        .footer { background-color: #f4f4f4; color: #777; text-align: center; padding: 15px; font-size: 14px; border-radius: 0 0 8px 8px; }
+        .cta-button { display: inline-block; background-color: #4CAF50; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin: 20px 0; font-size: 16px; }
+        .cta-button:hover { background-color: #45a049; }
+        .feature-list { list-style: none; padding: 0; }
+        .feature-list li { margin-bottom: 15px; }
+        .social-links { margin-top: 20px; }
+        .social-links a { margin: 0 10px; text-decoration: none; color: #4CAF50; }
+        .social-links a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome to HealthTriage!</h1>
+            <p>Your Health, Our Priority</p>
+        </div>
+        <div class="content">
+            <p>Dear [User Name],</p>
+            <p>Thank you for registering with <strong>HealthTriage</strong>! We are thrilled to have you join our community of health-conscious individuals. At HealthTriage, we are committed to providing you with the best telemedicine experience.</p>
+            <p>Here’s what you can do with your account:</p>
+            <ul class="feature-list">
+                <li><img src="https://www.flaticon.com/svg/512/512895.svg" alt="Appointment Icon"> <strong>Book Appointments:</strong> Schedule virtual consultations with top doctors and specialists.</li>
+                <li><img src="https://www.flaticon.com/svg/512/512896.svg" alt="Medical Records Icon"> <strong>Access Medical Records:</strong> Securely view and manage your health records anytime.</li>
+                <li><img src="https://www.flaticon.com/svg/512/512897.svg" alt="Health Tips Icon"> <strong>Personalized Health Tips:</strong> Receive tailored health advice based on your profile.</li>
+                <li><img src="https://www.flaticon.com/svg/512/512898.svg" alt="AI Icon"> <strong>AI Symptom Checker:</strong> Get instant recommendations for your symptoms.</li>
+                <li><img src="https://www.flaticon.com/svg/512/512899.svg" alt="Doctor Icon"> <strong>24/7 Doctor Support:</strong> Connect with medical practitioners anytime.</li>
+                <li><img src="https://www.flaticon.com/svg/512/512900.svg" alt="Wellness Icon"> <strong>Wellness Articles:</strong> Read and share articles on medical wellness and health tips.</li>
+                <li><img src="https://www.flaticon.com/svg/512/512901.svg" alt="Pharmacy Icon"> <strong>Online Pharmacy:</strong> Get details about medical facilities close to your doorstep</li>
+            </ul>
+            <p>To get started, click the button below:</p>
+            <a href="[Dashboard Link]" class="cta-button">Explore Your Dashboard</a>
+            <p>If you have any questions or need assistance, feel free to reach out to our support team at <a href="mailto:support@healthtriage.com">support@healthtriage.com</a>.</p>
+            <div class="social-links">
+                Follow us on:
+                <a href="[Facebook Link]">Facebook</a> |
+                <a href="[Twitter Link]">Twitter</a> |
+                <a href="[LinkedIn Link]">LinkedIn</a>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Best regards,<br><strong>The HealthTriage Team</strong></p>
+            <p>You are receiving this email because you registered on <a href="[Website Link]">HealthTriage</a>. If this was not you, please <a href="[Unsubscribe Link]">unsubscribe</a>.</p>
+        </div>
+    </div>
+</body>
+</html>
