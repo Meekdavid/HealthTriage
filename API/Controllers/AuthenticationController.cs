@@ -1,9 +1,11 @@
-﻿using Common.Models;
+﻿using Common.ConfigurationSettings;
+using Common.Models;
 using Core.Results;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using static Domain.Literals.StringLiterals;
 
 namespace Infrastructure.Controllers
 {
@@ -23,15 +25,17 @@ namespace Infrastructure.Controllers
         /// Authenticates the user and generates a new access token.
         /// </summary>
         /// <remarks>
-        /// If the login is successful, a new token is generated, and the user's refresh token is updated.
-        /// <response code="200">00 - Request Successful</response>
-        /// <response code="400">14 - Wrong Input Supplied</response>
-        /// <response code="401">18 - Login Failed</response>
-        /// <response code="403">17 - Email Address Not Confirmed</response>
-        /// <response code="500">09 - Exception Occurred, Contact Developer</response>
+        /// **Endpoint:** `POST /api/auth/login`  
+        ///  
+        /// If the login is successful, a new token is generated, and the user's refresh token is updated.  
+        ///
+        /// **Responses Codes:**  
+        /// - **200** → 00 - Request Successful  
+        /// - **200** → 14 - Wrong Input Supplied  
+        /// - **200** → 18 - Login Failed  
+        /// - **200** → 17 - Email Address Not Confirmed  
+        /// - **200** → 09 - Exception Occurred, Contact Developer  
         /// </remarks>
-        /// <param name="userModel">The login request containing user credentials.</param>
-        /// <returns>Returns a response with the authentication token.</returns>
         [HttpPost("login")]
         [ProducesResponseType(typeof(SuccessDataResult<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDataResult<string>), StatusCodes.Status400BadRequest)]
@@ -48,43 +52,25 @@ namespace Infrastructure.Controllers
         /// Registers a new user on HealthTriage.
         /// </summary>
         /// <remarks>
-        /// The client must send user registration details in JSON format.
-        /// Example request (cURL):
+        /// **Endpoint:** `POST /api/auth/register`  
+        ///  
+        /// The client must send user registration details as `multipart/form-data`.  
+        ///
+        /// **Example Request (cURL):**  
         /// ```sh
-        /// curl -X POST "http://localhost:yourport/api/user/register" \
-        /// -H "Content-Type: application/json" \
-        /// -d '{
-        ///     "username": "john_doe",
-        ///     "email": "john.doe@example.com",
-        ///     "password": "securePassword123"
-        /// }'
-        /// ```
+        /// curl -X POST "http://localhost:yourport/api/auth/register" \
+        /// -H "Content-Type: multipart/form-data" \
+        /// -F "username=john_doe" \
+        /// -F "email=john.doe@example.com" \
+        /// -F "password=securePassword123"
+        /// ```  
         ///
-        /// Example request (JavaScript Fetch API):
-        /// ```javascript
-        /// const userData = {
-        ///     username: "john_doe",
-        ///     email: "john.doe@example.com",
-        ///     password: "securePassword123"
-        /// };
-        ///
-        /// fetch("http://localhost:yourport/api/user/register", {
-        ///     method: "POST",
-        ///     headers: {
-        ///         "Content-Type": "application/json"
-        ///     },
-        ///     body: JSON.stringify(userData)
-        /// }).then(response => response.json())
-        ///   .then(data => console.log(data))
-        ///   .catch(error => console.error("Error:", error));
-        /// ```
-        /// <response code="200">00 - User registered successfully</response>
-        /// <response code="400">14 - Invalid input (e.g., missing fields or invalid email)</response>
-        /// <response code="409">16 - User already exists (e.g., duplicate username or email)</response>
-        /// <response code="500">09 - Server error</response>
+        /// **Response Codes:**  
+        /// - **200** → 00 - User registered successfully  
+        /// - **200** → 14 - Invalid input (e.g., missing fields or invalid email)  
+        /// - **200** → 16 - User already exists (e.g., duplicate username or email)  
+        /// - **200** → 09 - Exception Occurred, Contact Developer 
         /// </remarks>
-        /// <param name="newUser">The user registration details (username, email, password).</param>
-        /// <returns>Returns a response indicating the registration status.</returns>
         [HttpPost("register")]
         [ProducesResponseType(typeof(SuccessDataResult<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDataResult<string>), StatusCodes.Status400BadRequest)]
@@ -97,21 +83,23 @@ namespace Infrastructure.Controllers
             return Ok(result);
         }
 
+
         /// <summary>
         /// Sends a password reset token to the user's email.
         /// </summary>
         /// <remarks>
-        /// Generates a password reset token and emails it to the user.
-        /// <response code="200">00 - Request Successful</response>
-        /// <response code="400">14 - Wrong Input Supplied</response>
-        /// <response code="404">19 - User Not Found</response>
-        /// <response code="500">09 - Exception Occurred, Contact Developer</response>
+        /// **Endpoint:** `POST /api/auth/forgot-password`  
+        ///
+        /// Generates a password reset token and emails it to the user.  
+        ///
+        /// **Responses Codes:**  
+        /// - **200** → 00 - Request Successful  
+        /// - **200** → 14 - Wrong Input Supplied  
+        /// - **200** → 19 - User Not Found  
+        /// - **200** → 09 - Exception Occurred, Contact Developer  
         /// </remarks>
-        /// <param name="model">The request containing the user's email.</param>
-        /// <returns>Returns a response indicating whether the request was successful.</returns>
         [HttpPost("forgot-password")]
         [Consumes("application/json")]
-        [Produces("application/json")]
         [ProducesResponseType(typeof(SuccessDataResult<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorDataResult<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ErrorDataResult<string>), StatusCodes.Status404NotFound)]
@@ -126,15 +114,17 @@ namespace Infrastructure.Controllers
         /// Resets the user's password using the provided reset token.
         /// </summary>
         /// <remarks>
-        /// Changes the user's password using a valid reset token.
-        /// <response code="200">00 - Request Successful</response>
-        /// <response code="400">14 - Wrong Input Supplied</response>
-        /// <response code="404">19 - User Not Found</response>
-        /// <response code="422">20 - Password Reset Failed</response>
-        /// <response code="500">09 - Exception Occurred, Contact Developer</response>
+        /// **Endpoint:** `POST /api/auth/reset-password`  
+        ///
+        /// Changes the user's password using a valid reset token.  
+        ///
+        /// **Responses Codes:**  
+        /// - **200** → 00 - Request Successful  
+        /// - **200** → 14 - Wrong Input Supplied  
+        /// - **200** → 19 - User Not Found  
+        /// - **200** → 20 - Password Reset Failed  
+        /// - **200** → 09 - Exception Occurred, Contact Developer  
         /// </remarks>
-        /// <param name="model">The password reset request containing the reset token and new password.</param>
-        /// <returns>Returns a response indicating whether the password reset was successful.</returns>
         [HttpPost("reset-password")]
         [Consumes("application/json")]
         [ProducesResponseType(typeof(SuccessDataResult<string>), StatusCodes.Status200OK)]
@@ -152,17 +142,19 @@ namespace Infrastructure.Controllers
         /// Changes the user's password.
         /// </summary>
         /// <remarks>
-        /// Requires authentication. The user must provide the current password and a new password.
-        /// <response code="200">00 - Request Successful</response>
-        /// <response code="400">14 - Wrong Input Supplied</response>
-        /// <response code="401">19 - User Not Found</response>
-        /// <response code="403">21 - Wrong Password</response>
-        /// <response code="422">22 - Unable to Remove Password for User</response>
-        /// <response code="422">23 - Unable to Add New Password for User</response>
-        /// <response code="500">09 - Exception Occurred, Contact Developer</response>
+        /// **Endpoint:** `POST /api/auth/change-password`  
+        ///
+        /// Requires authentication. The user must provide the current password and a new password.  
+        ///
+        /// **Responses Codes:**  
+        /// - **200** → 00 - Request Successful  
+        /// - **200** → 14 - Wrong Input Supplied  
+        /// - **200** → 19 - User Not Found  
+        /// - **200** → 21 - Wrong Password  
+        /// - **200** → 22 - Unable to Remove Password for User  
+        /// - **200** → 23 - Unable to Add New Password for User  
+        /// - **200** → 09 - Exception Occurred, Contact Developer  
         /// </remarks>
-        /// <param name="model">The change password request containing the old and new password.</param>
-        /// <returns>Returns a response indicating whether the password change was successful.</returns>
         [Authorize]
         [HttpPost("change-password")]
         [Consumes("application/json")]
@@ -177,6 +169,23 @@ namespace Infrastructure.Controllers
             string userId = await _userContextService.GetUserId();
             var result = await _userManager.ChangeUserPasswordAsync(model, userId);
             return Ok(result);
+        }
+
+        /// <summary>
+        /// Confirm Email
+        /// </summary>
+        /// <remarks>Confirms user's email with token which has been sent. If success redirects user so login page, else redirects user to confirmation link expired page</remarks>
+        /// <param name="token"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        [HttpGet("confirm-email")]
+        public async Task<IActionResult> ConfirmEmail(string token, string email)
+        {
+            var confirmationResult = await _userManager.ConfirmEmailAsync(email, token);
+            string healthTriageHomePage = ConfigSettings.ApplicationSetting.HealthTriageHomePage;
+
+            // Redirect to the static HTML page and pass confirmation result as query params
+            return Redirect($"/confirm-email.html?success={StatusCode_Success}&message={Uri.EscapeDataString(confirmationResult.ResponseDescription)}&email={Uri.EscapeDataString(email)}&page={healthTriageHomePage}");
         }
     }
 }

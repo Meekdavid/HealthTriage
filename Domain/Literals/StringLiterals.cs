@@ -34,6 +34,8 @@ namespace Domain.Literals
         public const string StatusCode_UnableToRemovePassword = "22";
         public const string StatusCode_FailedToAddNewPassword = "23";
         public const string StatusCode_UserEmailAlreadyConfirmed = "24";
+        public const string StatusCode_ConfirtmationLinkExpired = "25";
+        public const string StatusCode_FailedToGenerateConfirmationToken = "26";
 
         /***** STATUS MESSAGES *****/
         public const string StatusMessage_Success = "Request Successful.";
@@ -46,8 +48,11 @@ namespace Domain.Literals
         public const string StatusMessage_UserCreationFailed = "User creation failed";
         public const string StatusMessage_UserEmailNotConfirmed = "Please confirm email";
         public const string StatusMessage_UserEmailAlreadyConfirmed = "Please confirm email";
+        public const string StatusMessage_FailedToGenerateConfirmationToken = "Failed to Generate Confirmation Token";
+        public const string StatusMessage_ConfirmationMailSent = "Confirmation link sent to your email";
         public const string StatusMessage_UserNotFound = "User not found.";
         public const string StatusMessage_PasswordResetFailed = "Password reset failed.";
+        public const string StatusMessage_ConfirtmationLinkExpired = "Confirmation token expired.";
         public const string StatusMessage_FailedToAddNewPassword = "Failed to Add New Password for User.";
         public const string StatusMessage_WrongPassword = "Wrong Password.";
         public const string StatusMessage_UnableToRemovePassword = "Unable to remove password for user.";

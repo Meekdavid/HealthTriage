@@ -254,10 +254,12 @@ namespace Persistence.DBContext
                 entity.HasKey(e => e.LanguageName);
             });
 
-            modelBuilder.Entity<Role>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-            });
+            //modelBuilder.Entity<Role>(entity =>
+            //{
+            //    entity.HasKey(e => e.Id);
+            //});
+
+            //modelBuilder.Entity<Role>().ToTable("AspNetRoles");
 
             base.OnModelCreating(modelBuilder);
         }

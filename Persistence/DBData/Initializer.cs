@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Persistence.DBContext;
 using Persistence.DBModels;
@@ -26,10 +28,12 @@ namespace Common.DBData
 
         private static async Task InsertRoles(RoleManager<Role> roleManager, UserManager<AppUser> userManager, HealthTriageDbContext context)
         {
+            var sql = context.Users.ToQueryString();
+
             if (!await roleManager.RoleExistsAsync("Admin"))
             {
                 var role = new Role("Admin");
-                await roleManager.CreateAsync(role);
+                var result = await roleManager.CreateAsync(role);
             }
 
             if (!await roleManager.RoleExistsAsync("Patient"))
@@ -56,11 +60,12 @@ namespace Common.DBData
                         FullName = "HealthTriage Limited",
                         Email = "admin@healthtriage.com",
                         EmailConfirmed = true,
+                        Id = Ulid.NewUlid().ToString()
                     };
 
-                    string adminPassword = "239074106";
+                    string adminPassword = "Admin239074106*";
 
-                    var createAdminUserResult = userManager.CreateAsync(adminUser, adminPassword).Result;
+                    var createAdminUserResult = await userManager.CreateAsync(adminUser, adminPassword);
 
                     if (createAdminUserResult.Succeeded)
                     {

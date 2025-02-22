@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            background: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Email Confirmation</h2>
+        <p id="message"></p>
+        <div id="action"></div>
+    </div>
+
+    <script>
+        // Function to get query parameters from URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Get values from query string
+        const success = getQueryParam('success') === 'True'; // Convert string to boolean
+        const message = getQueryParam('message');
+        const email = getQueryParam('email');
+        const homePage = getQueryParam('page');
+
+        // Display the message
+        document.getElementById("message").textContent = message;
+        document.getElementById("message").className = success ? "success" : "error";
+
+        // Show action button based on success/failure
+        if (success) {
+            document.getElementById("action").innerHTML = `<a href=${homePage}>Proceed to Login</a>`;
+        } else {
+            document.getElementById("action").innerHTML = `<a href="/resend-confirmation?email=${email}">Resend Confirmation Email</a>`;
+        }
+    </script>
+</body>
+</html>

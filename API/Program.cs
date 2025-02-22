@@ -149,6 +149,7 @@ app.UseAuthorization();
 //}
 app.UseSwagger();
 app.UseSwaggerUI();
+app.UseStaticFiles();
 
 app.UseHttpsRedirection();
 

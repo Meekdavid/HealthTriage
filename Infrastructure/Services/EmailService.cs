@@ -90,7 +90,7 @@ namespace Infrastructure.Repositories
             string encodedEmail = Uri.EscapeDataString(email);
 
             // Construct the confirmation link
-            string confirmationLink = $"{ConfigSettings.ApplicationSetting.BaseLocalStorageDomain}v1/auth/confirm-email?token={encodedToken}&email={encodedEmail}";
+            string confirmationLink = $"{ConfigSettings.ApplicationSetting.BaseLocalStorageDomain}api/auth/confirm-email?token={encodedToken}&email={encodedEmail}";
 
             // Create the MimeMessage
             var mailMessage = new MimeMessage();

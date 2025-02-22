@@ -13,7 +13,6 @@ using Common.AutoMapperProf;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Infrastructure.Repositories;
 using Domain.Interfaces;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Persistence.DBContext;
@@ -36,6 +35,8 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Google;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 
 namespace Common.ServiceCollectionExtensions
 {
@@ -56,18 +57,28 @@ namespace Common.ServiceCollectionExtensions
             services.AddTransient<IUserManager, AppUserManager>();
             services.AddTransient<IUserRepository, UserRepository>();
 
+            services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.AddConsole();
+                loggingBuilder.AddDebug();
+            });
+
+            //services.AddScoped<RoleManager<Role>>();
+            //services.AddScoped<UserManager<AppUser>>();
+
             //Database Configuration
             services.AddDbContext<HealthTriageDbContext>(options =>
                 options.UseSqlServer(ConfigSettings.ConnectionString.DefaultConnection));
 
-            //services.AddIdentity<AppUser, Role>().AddEntityFrameworkStores<HealthTriageDbContext>().AddDefaultTokenProviders();
-            services.AddIdentity<AppUser, Role>().AddEntityFrameworkStores<HealthTriageDbContext>();
-                //.AddTokenProvider<EmailTokenProvider<AppUser>>("email");
+            //services.AddIdentity<AppUser, Role>().AddEntityFrameworkStores<HealthTriageDbContext>().AddDefaultTokenProviders()
+            //        .AddTokenProvider<EmailTokenProvider<AppUser>>("email");
 
-            services.AddDataProtection()
-                .PersistKeysToDbContext<HealthTriageDbContext>();
+            services.AddIdentity<AppUser, Role>()
+                .AddEntityFrameworkStores<HealthTriageDbContext>()
+                .AddDefaultTokenProviders();
 
-            //services.AddIdentity<AppUser, IdentityRole>(options =>
+
+            //services.AddIdentity<AppUser, Role>(options =>
             //{
             //    options.Password.RequireDigit = true;
             //    options.Password.RequiredLength = 6;
@@ -75,9 +86,12 @@ namespace Common.ServiceCollectionExtensions
             //    options.Password.RequireUppercase = true;
             //    options.Password.RequireLowercase = true;
             //    options.Password.RequiredUniqueChars = 1;
-            //})
+            //});
             //    .AddEntityFrameworkStores<HealthTriageDbContext>()
             //    .AddDefaultTokenProviders();
+
+            services.AddDataProtection()
+                .PersistKeysToDbContext<HealthTriageDbContext>();
 
             // Add services to the container
             services.AddControllers(options =>

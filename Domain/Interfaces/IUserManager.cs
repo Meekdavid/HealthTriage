@@ -21,6 +21,8 @@ namespace Domain.Interfaces
         Task<IDataResult<string>> ChangeUserPasswordAsync(ChangePasswordRequest req, string userId);
         Task<IDataResult<Token>> CreateAccessToken(string userId);
         Task<Core.Results.IResult> ChangeRefreshToken(UserChangeRefreshTokenRequest request);
-        Task<IDataResult<string>> GenerateEmailConfirmationTokenAsync(string email);
+        Task<IDataResult<string>> GenerateEmailConfirmationTokenAsync(AppUser email);
+        Task<IDataResult<string>> ConfirmEmailAsync(string email, string token);
+        Task<IDataResult<string>> ResendConfirmationEmail(string email);
     }
 }

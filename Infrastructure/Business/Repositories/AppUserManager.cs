@@ -67,6 +67,63 @@ namespace Infrastructure.Business.Repositories
             return new SuccessDataResult<Token>(token);
         }
 
+        //public async Task<IDataResult<string>> CreateUserAndAssignRolesAsync(UserRegisterRequest userRegisterRequest, List<string> roles, HttpContext httpContext)
+        //{
+        //    string pathNewName = $"Uploads/User/{userRegisterRequest.Nickname}";
+        //    var profilePicture = await _storage.SingleUploadAsync(pathNewName, userRegisterRequest.ProfilePicture, httpContext);
+
+        //    var user = new AppUser
+        //    {
+        //        FullName = userRegisterRequest.FullName,
+        //        DOB = userRegisterRequest.DOB,
+        //        Gender = userRegisterRequest.Gender,
+        //        Email = userRegisterRequest.Email,
+        //        PhoneNumber = userRegisterRequest.Phone,
+        //        Address = userRegisterRequest.Address,
+        //        ZipCode = userRegisterRequest.ZipCode,
+        //        UserName = userRegisterRequest.Nickname,
+        //        BloodGroup = userRegisterRequest.BloodGroup,
+        //        Height = userRegisterRequest.Height,
+        //        Weight = userRegisterRequest.Weight,
+        //        EmergencyContact = userRegisterRequest.EmergencyContact,
+        //        LastActive = DateTime.UtcNow,
+        //        ProfilePicture = profilePicture.Data.pathOrContainerName
+        //    };
+
+        //    // 🔹 Normalize Email & Username before saving
+        //    user.NormalizedEmail = user.Email.ToUpper();
+        //    user.NormalizedUserName = user.UserName.ToUpper();
+
+        //    _logger.LogInformation($"Creating user: {user.Email}");
+
+        //    var result = await _userManager.CreateAsync(user, userRegisterRequest.Password);
+
+        //    if (result.Succeeded)
+        //    {
+        //        _logger.LogInformation($"User created: {user.Email}, Assigning roles...");
+
+        //        foreach (var role in roles)
+        //        {
+        //            var res = await _userManager.AddToRoleAsync(user, role);
+        //            if (!res.Succeeded)
+        //            {
+        //                _logger.LogWarning($"Failed to assign role '{role}' to {user.Email}");
+        //                return new ErrorDataResult<string>(StatusCode_RoleAssignmentFailed, StatusMessage_RoleAssignmentFailed);
+        //            }
+        //            _logger.LogInformation($"Role '{role}' assigned to {user.Email}");
+        //        }
+
+        //        // 🔹 Do NOT call `_unitOfWork.SaveChangesAsync()`, Identity handles this
+
+        //        _logger.LogInformation($"User {user.Email} successfully created with roles assigned.");
+        //        return new SuccessDataResult<string>(user.Id);
+        //    }
+
+        //    _logger.LogWarning($"User creation failed: {string.Join(", ", result.Errors.Select(e => e.Description))}");
+        //    return new ErrorDataResult<string>(JsonConvert.SerializeObject(result.Errors), StatusCode_UserCreationFailed, StatusMessage_UserCreationFailed);
+        //}
+
+
         public async Task<IDataResult<string>> CreateUserAndAssignRolesAsync(UserRegisterRequest userRegisterRequest, List<string> roles, HttpContext httpContext)
         {
             //var user = _mapper.Map<AppUser>(userRegisterRequest);
@@ -76,25 +133,30 @@ namespace Infrastructure.Business.Repositories
             string pathNewName = $"Uploads/User/{userRegisterRequest.Nickname}";
             var profilePicture = await _storage.SingleUploadAsync(pathNewName, userRegisterRequest.ProfilePicture, httpContext);
 
-            var user = new AppUser
-            {
-                FullName = userRegisterRequest.FullName,
-                DOB = userRegisterRequest.DOB,
-                Gender = userRegisterRequest.Gender,
-                Email = userRegisterRequest.Email,
-                PhoneNumber = userRegisterRequest.Phone,
-                Address = userRegisterRequest.Address,
-                ZipCode = userRegisterRequest.ZipCode,
-                UserName = userRegisterRequest.Nickname,
-                BloodGroup = userRegisterRequest.BloodGroup,
-                Height = userRegisterRequest.Height,
-                Weight = userRegisterRequest.Weight,
-                EmergencyContact = userRegisterRequest.EmergencyContact,
-                LastActive = DateTime.UtcNow,
-                ProfilePicture = profilePicture.Data.pathOrContainerName,
-                Id = Ulid.NewUlid().ToString(),
-                EmailConfirmed = true
-            };
+            //var user = new AppUser
+            //{
+            //    FullName = userRegisterRequest.FullName,
+            //    DOB = userRegisterRequest.DOB,
+            //    Gender = userRegisterRequest.Gender,
+            //    //Email = userRegisterRequest.Email,
+            //    //PhoneNumber = userRegisterRequest.Phone,
+            //    Address = userRegisterRequest.Address,
+            //    ZipCode = userRegisterRequest.ZipCode,
+            //    UserName = userRegisterRequest.Nickname,
+            //    BloodGroup = userRegisterRequest.BloodGroup,
+            //    Height = userRegisterRequest.Height,
+            //    Weight = userRegisterRequest.Weight,
+            //    EmergencyContact = userRegisterRequest.EmergencyContact,
+            //    LastActive = DateTime.UtcNow,
+            //    ProfilePicture = profilePicture.Data.pathOrContainerName,
+            //    //Id = Ulid.NewUlid().ToString(),
+            //    //EmailConfirmed = true
+            //};
+
+            AppUser user = new AppUser { Email = userRegisterRequest.Email };
+            user.UserName = userRegisterRequest.Email;
+            user.FullName = userRegisterRequest.FullName;
+            user.LastActive = DateTime.UtcNow;
 
             await _unitOfWork.BeginTransactionAsync();
             _logger.LogInformation($"Transaction started for creating user with Email: {user.Email}");
@@ -136,12 +198,13 @@ namespace Infrastructure.Business.Repositories
                 }
                 else
                 {
-                    var confirmationTokenResult = await this.GenerateEmailConfirmationTokenAsync(user.Email);
+                    //var confirmationTokenResult = await this.GenerateEmailConfirmationTokenAsync(user.Email);
+                    var confirmationTokenResult = await this.GenerateEmailConfirmationTokenAsync(user);
                     _logger.LogInformation($"Email confirmation token generated for user with Email: {user.Email}");
 
                     await _emailHandler.SendConfirmationEmail(user.Email, confirmationTokenResult.Data);
                     _logger.LogInformation($"Confirmation email sent to user with Email: {user.Email}");
-                }                
+                }
 
                 await _unitOfWork.SaveChangesAsync();
                 await _unitOfWork.CommitAsync();
@@ -327,9 +390,35 @@ namespace Infrastructure.Business.Repositories
             return new SuccessResult("Refresh token updated successfully");
         }
 
-        public async Task<IDataResult<string>> GenerateEmailConfirmationTokenAsync(string email)
+        public async Task<IDataResult<string>> GenerateEmailConfirmationTokenAsync(AppUser email)
         {
             _logger.LogInformation($"Generating email confirmation token for: {email}");
+
+            AppUser user = await _userManager.FindByEmailAsync(email.Email.ToLower());
+            AppUser userr = await _userManager.FindByEmailAsync(email.UserName);
+            AppUser usert = await _userManager.FindByEmailAsync(email.FullName);
+
+            //if (user == null)
+            //{
+            //    _logger.LogInformation($"User not found for email: {email}");
+            //    return new ErrorDataResult<string>("", StatusCode_UserNotFound, StatusMessage_UserNotFound);
+            //}
+
+            if (email.EmailConfirmed)
+            {
+                _logger.LogInformation($"Email already confirmed for: {email}");
+                return new ErrorDataResult<string>("", StatusCode_UserEmailAlreadyConfirmed, StatusMessage_UserEmailAlreadyConfirmed);
+            }
+
+            string confirmationToken = await _userManager.GenerateEmailConfirmationTokenAsync(email);
+            _logger.LogInformation($"Confirmation token generated for email: {email}");
+
+            return new SuccessDataResult<string>(data: confirmationToken);
+        }
+
+        public async Task<IDataResult<string>> ConfirmEmailAsync(string email, string token)
+        {
+            _logger.LogInformation($"Attempting to confirm email for: {email}");
 
             AppUser user = await _userManager.FindByEmailAsync(email);
 
@@ -339,16 +428,60 @@ namespace Infrastructure.Business.Repositories
                 return new ErrorDataResult<string>("", StatusCode_UserNotFound, StatusMessage_UserNotFound);
             }
 
-            if (user.EmailConfirmed)
+            IdentityResult result = await _userManager.ConfirmEmailAsync(user, token); // This sets EmailConfirmed property true
+
+            if (result.Succeeded)
             {
-                _logger.LogInformation($"Email already confirmed for: {email}");
-                return new ErrorDataResult<string>("", StatusCode_UserEmailAlreadyConfirmed, StatusMessage_UserEmailAlreadyConfirmed);
+                _logger.LogInformation($"Email confirmed successfully for: {email}");
+
+                // Define the path to the text file in the root of the project
+                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WelcomeEmail.txt");
+
+                // Read the content of the text file
+                string fileContent = File.ReadAllText(filePath);
+
+                // Replace occurrences of a specific string (e.g., "oldString" with "newString")
+                string replacedContent = fileContent.Replace("[User Name]", user.FullName)
+                    .Replace("[Website Link]", ConfigSettings.ApplicationSetting.HealthTriageHomePage)
+                    .Replace("[Dashboard Link]", ConfigSettings.ApplicationSetting.HealthTriageHomePage)
+                    .Replace("[Unsubscribe Link]", ConfigSettings.ApplicationSetting.HealthTriageUnsubscribeLink);
+
+                await _emailHandler.SendEmailAsync(user.Email, "Welcome to HealthTriage", replacedContent);
+                _logger.LogInformation($"Welcome email sent to user with Email: {user.Email}");
+
+                return new SuccessDataResult<string>("");
             }
-
-            string confirmationToken = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            _logger.LogInformation($"Confirmation token generated for email: {email}");
-
-            return new SuccessDataResult<string>(data: confirmationToken);
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    _logger.LogError($"Failed to confirm email.{item.Description}");
+                }
+                return new ErrorDataResult<string>("", StatusCode_ConfirtmationLinkExpired, StatusMessage_ConfirtmationLinkExpired);
+            }
         }
+
+        public Task<IDataResult<string>> ResendConfirmationEmail(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        //public async Task<IDataResult<string>> ResendConfirmationEmail(string email)
+        //{
+        //    _logger.LogInformation($"Attempting to resend confirmation email to: {email}");
+
+        //    var result = await this.GenerateEmailConfirmationTokenAsync(email);
+        //    if (result.ResponseCode == StatusCode_Success)
+        //    {
+        //        await _emailHandler.SendConfirmationEmail(email, result.Data);
+        //        _logger.LogInformation($"Confirmation email sent to: {email}");
+        //        return new SuccessDataResult<string>(StatusMessage_ConfirmationMailSent);
+        //    }
+        //    else
+        //    {
+        //        _logger.LogInformation($"Failed to generate confirmation token for: {email}. Reason: {result.ResponseDescription}");
+        //        return new ErrorDataResult<string>("", StatusCode_FailedToGenerateConfirmationToken, StatusMessage_FailedToGenerateConfirmationToken);
+        //    }
+        //}
     }
 }
