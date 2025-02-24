@@ -28,6 +28,7 @@ namespace Persistence.Concrete
             }
 
             CreatedDate = DateTime.UtcNow;
+            Status = Status.Active;
         }
     }
 }

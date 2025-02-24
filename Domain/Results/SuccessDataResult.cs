@@ -14,10 +14,10 @@ namespace Core.Results
 
         }
 
-        //public SuccessDataResult(string ResponseDescription) : base(default, StatusCode_Success, ResponseDescription)
-        //{
+        public SuccessDataResult(T data, string ResponseDescription) : base(StatusCode_Success, ResponseDescription)
+        {
 
-        //}
+        }
 
     }
 }

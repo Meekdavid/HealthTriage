@@ -10,6 +10,8 @@ namespace Common.DTOs
     {
         public string PractitionerId { get; set; }
         public string PractitionerTitle { get; set; }
+        public string ProfilePictureUrl { get; set; }
+        public string UserName { get; set; }
         public string PractitionerName { get; set; }
         public string MedicalLicenseNumber { get; set; }
         public string Experience { get; set; }

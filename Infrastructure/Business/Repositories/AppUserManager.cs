@@ -133,30 +133,30 @@ namespace Infrastructure.Business.Repositories
             string pathNewName = $"Uploads/User/{userRegisterRequest.Nickname}";
             var profilePicture = await _storage.SingleUploadAsync(pathNewName, userRegisterRequest.ProfilePicture, httpContext);
 
-            //var user = new AppUser
-            //{
-            //    FullName = userRegisterRequest.FullName,
-            //    DOB = userRegisterRequest.DOB,
-            //    Gender = userRegisterRequest.Gender,
-            //    //Email = userRegisterRequest.Email,
-            //    //PhoneNumber = userRegisterRequest.Phone,
-            //    Address = userRegisterRequest.Address,
-            //    ZipCode = userRegisterRequest.ZipCode,
-            //    UserName = userRegisterRequest.Nickname,
-            //    BloodGroup = userRegisterRequest.BloodGroup,
-            //    Height = userRegisterRequest.Height,
-            //    Weight = userRegisterRequest.Weight,
-            //    EmergencyContact = userRegisterRequest.EmergencyContact,
-            //    LastActive = DateTime.UtcNow,
-            //    ProfilePicture = profilePicture.Data.pathOrContainerName,
-            //    //Id = Ulid.NewUlid().ToString(),
-            //    //EmailConfirmed = true
-            //};
+            var user = new AppUser
+            {
+                FullName = userRegisterRequest.FullName,
+                DOB = userRegisterRequest.DOB,
+                Gender = userRegisterRequest.Gender,
+                Email = userRegisterRequest.Email,
+                PhoneNumber = userRegisterRequest.Phone,
+                Address = userRegisterRequest.Address,
+                ZipCode = userRegisterRequest.ZipCode,
+                UserName = userRegisterRequest.Nickname,
+                BloodGroup = userRegisterRequest.BloodGroup,
+                Height = userRegisterRequest.Height,
+                Weight = userRegisterRequest.Weight,
+                EmergencyContact = userRegisterRequest.EmergencyContact,
+                LastActive = DateTime.UtcNow,
+                ProfilePicture = profilePicture.Data.pathOrContainerName,
+                //Id = Ulid.NewUlid().ToString(),
+                //EmailConfirmed = true
+            };
 
-            AppUser user = new AppUser { Email = userRegisterRequest.Email };
-            user.UserName = userRegisterRequest.Email;
-            user.FullName = userRegisterRequest.FullName;
-            user.LastActive = DateTime.UtcNow;
+            //AppUser user = new AppUser { Email = userRegisterRequest.Email };
+            //user.UserName = userRegisterRequest.Email;
+            //user.FullName = userRegisterRequest.FullName;
+            //user.LastActive = DateTime.UtcNow;
 
             await _unitOfWork.BeginTransactionAsync();
             _logger.LogInformation($"Transaction started for creating user with Email: {user.Email}");
@@ -394,9 +394,7 @@ namespace Infrastructure.Business.Repositories
         {
             _logger.LogInformation($"Generating email confirmation token for: {email}");
 
-            AppUser user = await _userManager.FindByEmailAsync(email.Email.ToLower());
-            AppUser userr = await _userManager.FindByEmailAsync(email.UserName);
-            AppUser usert = await _userManager.FindByEmailAsync(email.FullName);
+            //AppUser user = await _userManager.FindByEmailAsync(email.Email.ToLower());
 
             //if (user == null)
             //{
@@ -449,7 +447,7 @@ namespace Infrastructure.Business.Repositories
                 await _emailHandler.SendEmailAsync(user.Email, "Welcome to HealthTriage", replacedContent);
                 _logger.LogInformation($"Welcome email sent to user with Email: {user.Email}");
 
-                return new SuccessDataResult<string>("");
+                return new SuccessDataResult<string>(StatusMessage_SuccessEmailConfirmation);
             }
             else
             {
@@ -461,27 +459,22 @@ namespace Infrastructure.Business.Repositories
             }
         }
 
-        public Task<IDataResult<string>> ResendConfirmationEmail(string email)
+        public async Task<IDataResult<string>> ResendConfirmationEmail(string email)
         {
-            throw new NotImplementedException();
+            _logger.LogInformation($"Attempting to resend confirmation email to: {email}");
+            AppUser user = await _userManager.FindByEmailAsync(email);
+            var result = await this.GenerateEmailConfirmationTokenAsync(user);
+            if (result.ResponseCode == StatusCode_Success)
+            {
+                await _emailHandler.SendConfirmationEmail(email, result.Data);
+                _logger.LogInformation($"Confirmation email sent to: {email}");
+                return new SuccessDataResult<string>(StatusMessage_ConfirmationMailSent);
+            }
+            else
+            {
+                _logger.LogInformation($"Failed to generate confirmation token for: {email}. Reason: {result.ResponseDescription}");
+                return new ErrorDataResult<string>("", StatusCode_FailedToGenerateConfirmationToken, StatusMessage_FailedToGenerateConfirmationToken);
+            }
         }
-
-        //public async Task<IDataResult<string>> ResendConfirmationEmail(string email)
-        //{
-        //    _logger.LogInformation($"Attempting to resend confirmation email to: {email}");
-
-        //    var result = await this.GenerateEmailConfirmationTokenAsync(email);
-        //    if (result.ResponseCode == StatusCode_Success)
-        //    {
-        //        await _emailHandler.SendConfirmationEmail(email, result.Data);
-        //        _logger.LogInformation($"Confirmation email sent to: {email}");
-        //        return new SuccessDataResult<string>(StatusMessage_ConfirmationMailSent);
-        //    }
-        //    else
-        //    {
-        //        _logger.LogInformation($"Failed to generate confirmation token for: {email}. Reason: {result.ResponseDescription}");
-        //        return new ErrorDataResult<string>("", StatusCode_FailedToGenerateConfirmationToken, StatusMessage_FailedToGenerateConfirmationToken);
-        //    }
-        //}
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class NewUpdateNew : Migration
+    public partial class Main : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,14 +15,14 @@ namespace Persistence.Migrations
                 name: "Articles",
                 columns: table => new
                 {
-                    ArticleId = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    CoverPhotoUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ArticleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CoverPhotoUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Category = table.Column<int>(type: "int", nullable: false),
-                    AuthorType = table.Column<int>(type: "int", nullable: false),
-                    ArticleState = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Category = table.Column<int>(type: "int", nullable: true),
+                    AuthorType = table.Column<int>(type: "int", nullable: true),
+                    ArticleState = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -52,24 +52,26 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProfilePicture = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DOB = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BloodGroup = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Height = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Weight = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EmergencyContact = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RefreshTokenEndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastActive = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProfilePicture = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DOB = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BloodGroup = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Height = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Weight = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmergencyContact = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RefreshTokenEndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastActive = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -92,10 +94,10 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     PhoneCode = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CountryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ISOCode2 = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ISOCode3 = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Flag = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CountryName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ISOCode2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ISOCode3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Flag = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -122,9 +124,9 @@ namespace Persistence.Migrations
                 {
                     FAQId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Question = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Answer = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AddedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Question = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Answer = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AddedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -139,27 +141,27 @@ namespace Persistence.Migrations
                 name: "HealthcareFacilities",
                 columns: table => new
                 {
-                    HealthcareFacilityId = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    FacilityName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FacilityType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    State = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    WebsiteUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    OperatingHours = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ServicesOffered = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Specialties = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LicenseNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AccreditationStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FacilityRating = table.Column<float>(type: "real", nullable: false),
-                    EmergencyServicesAvailable = table.Column<bool>(type: "bit", nullable: false),
-                    InsuranceAccepted = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HealthcareFacilityId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    FacilityName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FacilityType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    WebsiteUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OperatingHours = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ServicesOffered = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Specialties = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LicenseNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AccreditationStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FacilityRating = table.Column<float>(type: "real", nullable: true),
+                    EmergencyServicesAvailable = table.Column<bool>(type: "bit", nullable: true),
+                    InsuranceAccepted = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NumberOfBeds = table.Column<int>(type: "int", nullable: true),
-                    StaffCount = table.Column<int>(type: "int", nullable: false),
-                    LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    StaffCount = table.Column<int>(type: "int", nullable: true),
+                    LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -183,35 +185,10 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Practitioners",
-                columns: table => new
-                {
-                    PractitionerId = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    PractitionerTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PractitionerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MedicalLicenseNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Experience = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Institution = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    WorkAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    WorkEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GovernmentId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ApplicationCertificateUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    rating = table.Column<int>(type: "int", nullable: true),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Practitioners", x => x.PractitionerId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Symptoms",
                 columns: table => new
                 {
-                    SymptomId = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    SymptomId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -227,7 +204,7 @@ namespace Persistence.Migrations
                 name: "SymptomSearchHistories",
                 columns: table => new
                 {
-                    SymptomSearchHistoryId = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    SymptomSearchHistoryId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -243,7 +220,7 @@ namespace Persistence.Migrations
                 name: "TreatmentOptions",
                 columns: table => new
                 {
-                    TreatmentOptionId = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    TreatmentOptionId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     TreatmentType = table.Column<int>(type: "int", nullable: false),
                     SeverityLevel = table.Column<int>(type: "int", nullable: false),
                     Details = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -262,11 +239,11 @@ namespace Persistence.Migrations
                 name: "ArticleRatings",
                 columns: table => new
                 {
-                    ArticleRatingId = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    ArticleId = table.Column<string>(type: "nvarchar(25)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Rating = table.Column<int>(type: "int", nullable: false),
-                    ArticleId1 = table.Column<string>(type: "nvarchar(25)", nullable: true),
+                    ArticleRatingId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ArticleId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Rating = table.Column<int>(type: "int", nullable: true),
+                    ArticleId1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -279,8 +256,7 @@ namespace Persistence.Migrations
                         name: "FK_ArticleRatings_Articles_ArticleId",
                         column: x => x.ArticleId,
                         principalTable: "Articles",
-                        principalColumn: "ArticleId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ArticleId");
                     table.ForeignKey(
                         name: "FK_ArticleRatings_Articles_ArticleId1",
                         column: x => x.ArticleId1,
@@ -292,10 +268,10 @@ namespace Persistence.Migrations
                 name: "ArticleViews",
                 columns: table => new
                 {
-                    ArticleViewId = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    ArticleId = table.Column<string>(type: "nvarchar(25)", nullable: false),
+                    ArticleViewId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ArticleId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ArticleId1 = table.Column<string>(type: "nvarchar(25)", nullable: true),
+                    ArticleId1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -308,8 +284,7 @@ namespace Persistence.Migrations
                         name: "FK_ArticleViews_Articles_ArticleId",
                         column: x => x.ArticleId,
                         principalTable: "Articles",
-                        principalColumn: "ArticleId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ArticleId");
                     table.ForeignKey(
                         name: "FK_ArticleViews_Articles_ArticleId1",
                         column: x => x.ArticleId1,
@@ -342,7 +317,7 @@ namespace Persistence.Migrations
                 name: "Admins",
                 columns: table => new
                 {
-                    AdminId = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    AdminId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -364,11 +339,11 @@ namespace Persistence.Migrations
                 name: "ArticleComments",
                 columns: table => new
                 {
-                    ArticleCommentId = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    ArticleId = table.Column<string>(type: "nvarchar(25)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CommentText = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ArticleId1 = table.Column<string>(type: "nvarchar(25)", nullable: true),
+                    ArticleCommentId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ArticleId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    CommentText = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ArticleId1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -381,8 +356,7 @@ namespace Persistence.Migrations
                         name: "FK_ArticleComments_Articles_ArticleId",
                         column: x => x.ArticleId,
                         principalTable: "Articles",
-                        principalColumn: "ArticleId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ArticleId");
                     table.ForeignKey(
                         name: "FK_ArticleComments_Articles_ArticleId1",
                         column: x => x.ArticleId1,
@@ -392,8 +366,7 @@ namespace Persistence.Migrations
                         name: "FK_ArticleComments_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -485,8 +458,8 @@ namespace Persistence.Migrations
                 name: "MedicalActivityLogs",
                 columns: table => new
                 {
-                    MedicalActivityLogId = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    MedicalActivityLogId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Details = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ActivityType = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
@@ -501,17 +474,25 @@ namespace Persistence.Migrations
                         name: "FK_MedicalActivityLogs_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "ConsultationHistories",
+                name: "Practitioners",
                 columns: table => new
                 {
-                    ConsultationHistoryId = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    PractitionerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    PractitionerId = table.Column<string>(type: "nvarchar(25)", nullable: false),
+                    PractitionerTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PractitionerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MedicalLicenseNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Experience = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Institution = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    WorkAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    WorkEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GovernmentId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ApplicationCertificateUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Rating = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -519,42 +500,12 @@ namespace Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ConsultationHistories", x => x.ConsultationHistoryId);
+                    table.PrimaryKey("PK_Practitioners", x => x.PractitionerId);
                     table.ForeignKey(
-                        name: "FK_ConsultationHistories_AspNetUsers_UserId",
+                        name: "FK_Practitioners_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ConsultationHistories_Practitioners_PractitionerId",
-                        column: x => x.PractitionerId,
-                        principalTable: "Practitioners",
-                        principalColumn: "PractitionerId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PractitionerRatings",
-                columns: table => new
-                {
-                    RatingId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    PractitionerId = table.Column<string>(type: "nvarchar(25)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Rating = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PractitionerRatings", x => x.RatingId);
-                    table.ForeignKey(
-                        name: "FK_PractitionerRatings_Practitioners_PractitionerId",
-                        column: x => x.PractitionerId,
-                        principalTable: "Practitioners",
-                        principalColumn: "PractitionerId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -562,8 +513,8 @@ namespace Persistence.Migrations
                 name: "SymptomSearchHistorySymptom",
                 columns: table => new
                 {
-                    SymptomSearchHistoryId = table.Column<string>(type: "nvarchar(25)", nullable: false),
-                    SymptomId = table.Column<string>(type: "nvarchar(25)", nullable: false)
+                    SymptomSearchHistoryId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    SymptomId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -586,8 +537,8 @@ namespace Persistence.Migrations
                 name: "SymptomSearchHistoryTreatmentOption",
                 columns: table => new
                 {
-                    SymptomSearchHistoryId = table.Column<string>(type: "nvarchar(25)", nullable: false),
-                    TreatmentOptionId = table.Column<string>(type: "nvarchar(25)", nullable: false)
+                    SymptomSearchHistoryId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    TreatmentOptionId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -610,10 +561,10 @@ namespace Persistence.Migrations
                 name: "CommentReplies",
                 columns: table => new
                 {
-                    CommentReplyId = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    CommentId = table.Column<string>(type: "nvarchar(25)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ReplyText = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CommentReplyId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CommentId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ReplyText = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -635,13 +586,64 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ConsultationHistories",
+                columns: table => new
+                {
+                    ConsultationHistoryId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    PractitionerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ConsultationHistories", x => x.ConsultationHistoryId);
+                    table.ForeignKey(
+                        name: "FK_ConsultationHistories_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_ConsultationHistories_Practitioners_PractitionerId",
+                        column: x => x.PractitionerId,
+                        principalTable: "Practitioners",
+                        principalColumn: "PractitionerId");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PractitionerRatings",
+                columns: table => new
+                {
+                    RatingId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    PractitionerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Rating = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PractitionerRatings", x => x.RatingId);
+                    table.ForeignKey(
+                        name: "FK_PractitionerRatings_Practitioners_PractitionerId",
+                        column: x => x.PractitionerId,
+                        principalTable: "Practitioners",
+                        principalColumn: "PractitionerId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ConsultancyChats",
                 columns: table => new
                 {
-                    ConsultancyChatId = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    Text = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ConsultationHistoryId = table.Column<string>(type: "nvarchar(25)", nullable: true),
+                    ConsultancyChatId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Text = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConsultationHistoryId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -734,13 +736,15 @@ namespace Persistence.Migrations
                 name: "IX_AspNetUsers_Email",
                 table: "AspNetUsers",
                 column: "Email",
-                unique: true);
+                unique: true,
+                filter: "[Email] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUsers_UserName",
                 table: "AspNetUsers",
                 column: "UserName",
-                unique: true);
+                unique: true,
+                filter: "[UserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
@@ -783,6 +787,11 @@ namespace Persistence.Migrations
                 name: "IX_PractitionerRatings_PractitionerId",
                 table: "PractitionerRatings",
                 column: "PractitionerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Practitioners_UserId",
+                table: "Practitioners",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SymptomSearchHistorySymptom_SymptomId",
@@ -877,10 +886,10 @@ namespace Persistence.Migrations
                 name: "Articles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Practitioners");
 
             migrationBuilder.DropTable(
-                name: "Practitioners");
+                name: "AspNetUsers");
         }
     }
 }

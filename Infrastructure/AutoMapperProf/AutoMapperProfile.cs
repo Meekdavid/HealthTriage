@@ -51,7 +51,8 @@ namespace Common.AutoMapperProf
             CreateMap<Language, LanguageResponseDto>();
             CreateMap<MedicalActivityLog, MedicalActivityLogResponseDto>()
             .ForMember(dest => dest.ActivityType, opt => opt.MapFrom(src => src.ActivityType.ToString())); // Converts enum to string
-            CreateMap<Practitioner, PractitionerResponseDto>();
+            CreateMap<Practitioner, PractitionerResponseDto>().ReverseMap();
+            CreateMap<Practitioner, PractitionerRequest>().ReverseMap();
             CreateMap<Symptom, SymptomResponseDto>();
             CreateMap<SymptomSearchHistory, SymptomSearchHistoryResponseDto>()
             .ForMember(dest => dest.Symptoms, opt => opt.MapFrom(src =>

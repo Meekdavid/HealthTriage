@@ -1,9 +1,5 @@
 ﻿using Persistence.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Persistence.Enums;
 using Common.Enums;
 using Persistence.DBModels.JoinDBModels;
@@ -15,6 +11,9 @@ namespace Persistence.DBModels
         public TreatmentOption()
         {
             Status = Status.Active;
+            TreatmentOptionId = string.Empty;
+            Details = string.Empty;
+            Name = string.Empty;
             SymptomSearchHistoryTreatmentOptions = new HashSet<SymptomSearchHistoryTreatmentOption>();
         }
 
@@ -24,6 +23,7 @@ namespace Persistence.DBModels
         public string Details { get; set; }
         public string Name { get; set; }
 
+        // Navigation property
         public ICollection<SymptomSearchHistoryTreatmentOption> SymptomSearchHistoryTreatmentOptions { get; set; }
     }
 }

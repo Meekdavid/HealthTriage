@@ -1,4 +1,5 @@
 ﻿using Common.ConfigurationSettings;
+using Common.DTOs;
 using Common.Models;
 using Core.Results;
 using Domain.Interfaces;
@@ -19,34 +20,7 @@ namespace Infrastructure.Controllers
         {
             _userManager = userManager;
             _userContextService = userContextService;
-        }
-
-        /// <summary>
-        /// Authenticates the user and generates a new access token.
-        /// </summary>
-        /// <remarks>
-        /// **Endpoint:** `POST /api/auth/login`  
-        ///  
-        /// If the login is successful, a new token is generated, and the user's refresh token is updated.  
-        ///
-        /// **Responses Codes:**  
-        /// - **200** → 00 - Request Successful  
-        /// - **200** → 14 - Wrong Input Supplied  
-        /// - **200** → 18 - Login Failed  
-        /// - **200** → 17 - Email Address Not Confirmed  
-        /// - **200** → 09 - Exception Occurred, Contact Developer  
-        /// </remarks>
-        [HttpPost("login")]
-        [ProducesResponseType(typeof(SuccessDataResult<string>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ErrorDataResult<string>), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ErrorDataResult<string>), StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(typeof(ErrorDataResult<string>), StatusCodes.Status403Forbidden)]
-        [ProducesResponseType(typeof(ErrorDataResult<string>), StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<IDataResult<Token>>> Login([FromBody] UserLoginRequest userModel)
-        {
-            var result = await _userManager.SignInAsync(userModel.Email, userModel.Password);
-            return Ok(result);
-        }
+        }        
 
         /// <summary>
         /// Registers a new user on HealthTriage.
@@ -80,6 +54,33 @@ namespace Infrastructure.Controllers
         public async Task<ActionResult<IDataResult<string>>> Register([FromForm] UserRegisterRequest newUser)
         {
             var result = await _userManager.CreateUserAndAssignRolesAsync(newUser, new List<string> { "Patient" }, HttpContext);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Authenticates the user and generates a new access token.
+        /// </summary>
+        /// <remarks>
+        /// **Endpoint:** `POST /api/auth/login`  
+        ///  
+        /// If the login is successful, a new token is generated, and the user's refresh token is updated.  
+        ///
+        /// **Responses Codes:**  
+        /// - **200** → 00 - Request Successful  
+        /// - **200** → 14 - Wrong Input Supplied  
+        /// - **200** → 18 - Login Failed  
+        /// - **200** → 17 - Email Address Not Confirmed  
+        /// - **200** → 09 - Exception Occurred, Contact Developer  
+        /// </remarks>
+        [HttpPost("login")]
+        [ProducesResponseType(typeof(SuccessDataResult<SuccessfulLoginDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorDataResult<string>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ErrorDataResult<string>), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(ErrorDataResult<string>), StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(ErrorDataResult<string>), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<IDataResult<Token>>> Login([FromBody] UserLoginRequest userModel)
+        {
+            var result = await _userManager.SignInAsync(userModel.Email, userModel.Password);
             return Ok(result);
         }
 
@@ -174,7 +175,7 @@ namespace Infrastructure.Controllers
         /// <summary>
         /// Confirm Email
         /// </summary>
-        /// <remarks>Confirms user's email with token which has been sent. If success redirects user so login page, else redirects user to confirmation link expired page</remarks>
+        /// <remarks>The endpoint is consumed from backend. The endpoint Confirms user's email with token which has been sent. If success, displays success page and provide a button for user to login. The endpoint is fired when a user clicks on <b>Confirm Email</b> in their mailbox</remarks>
         /// <param name="token"></param>
         /// <param name="email"></param>
         /// <returns></returns>
@@ -183,9 +184,45 @@ namespace Infrastructure.Controllers
         {
             var confirmationResult = await _userManager.ConfirmEmailAsync(email, token);
             string healthTriageHomePage = ConfigSettings.ApplicationSetting.HealthTriageHomePage;
+            bool success = StatusCode_Success == "00" ? true : false;
 
             // Redirect to the static HTML page and pass confirmation result as query params
-            return Redirect($"/confirm-email.html?success={StatusCode_Success}&message={Uri.EscapeDataString(confirmationResult.ResponseDescription)}&email={Uri.EscapeDataString(email)}&page={healthTriageHomePage}");
+            return Redirect($"/confirm-email.html?success={success}&message={Uri.EscapeDataString(confirmationResult.ResponseDescription)}&email={Uri.EscapeDataString(email)}");
         }
+
+        /// <summary>
+        /// Retrieve HealthTriage Homepage
+        /// </summary>
+        /// <remarks>The endpoint is consumed from backend</remarks>
+        /// <param name="message"></param>
+        /// <param name="success"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        [HttpGet("get-confirmation-page")]
+        public IActionResult GetConfirmationPage(string email, bool success, string message)
+        {
+            string healthTriageHomePage = ConfigSettings.ApplicationSetting.HealthTriageHomePage;
+
+            return Ok(new
+            {
+                success,
+                message,
+                email,
+                page = healthTriageHomePage
+            });
+        }
+
+        /// <summary>
+        /// Resend Email Confirmation Mail
+        /// </summary>
+        /// <remarks>The endpoint is consumed from backend</remarks>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost("resend-confirmation")]
+        public async Task<IActionResult> ResendConfirmation([FromBody] ResendConfirmationRequest request)
+        {
+            return Ok(await _userManager.ResendConfirmationEmail(request.Email));
+        }
+
     }
 }

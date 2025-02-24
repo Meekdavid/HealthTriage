@@ -20,5 +20,10 @@ namespace Core.Results
         {
             Data = data;
         }
+
+        public DataResult(string ResponseCode, string ResponseDescription) : base(ResponseCode, ResponseDescription)
+        {
+            //Data = data;
+        }
     }
 }

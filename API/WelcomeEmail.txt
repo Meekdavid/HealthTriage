@@ -4,20 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to HealthTriage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
-        .container { max-width: 600px; margin: 20px auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
-        .header { background-color: #4CAF50; color: #fff; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
-        .content { padding: 20px; color: #333; }
-        .content img { max-width: 24px; height: auto; vertical-align: middle; margin-right: 10px; }
-        .footer { background-color: #f4f4f4; color: #777; text-align: center; padding: 15px; font-size: 14px; border-radius: 0 0 8px 8px; }
-        .cta-button { display: inline-block; background-color: #4CAF50; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin: 20px 0; font-size: 16px; }
-        .cta-button:hover { background-color: #45a049; }
-        .feature-list { list-style: none; padding: 0; }
-        .feature-list li { margin-bottom: 15px; }
-        .social-links { margin-top: 20px; }
-        .social-links a { margin: 0 10px; text-decoration: none; color: #4CAF50; }
-        .social-links a:hover { text-decoration: underline; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff; /* Light blue background for a health-related feel */
+            color: #333;
+        }
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #2e7d32; /* Dark green for a health-related theme */
+            color: #fff;
+            padding: 35px 20px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header p {
+            margin: 5px 0 0;
+            font-size: 16px;
+        }
+        .content {
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .feature-list {
+            padding: 0;
+            margin: 20px 0;
+        }
+        .feature-list li {
+            margin-bottom: 10px;
+            background-color: #e8f5e9; /* Light green */
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none; /* Remove bullet points */
+            font-size: 16px;
+            color: #333;
+        }
+        .feature-list li strong {
+            color: #2e7d32; /* Dark green for emphasis */
+        }
+        .cta-button {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            background-color: #d32f2f; /* Red for call-to-action */
+            color: #fff;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #b71c1c; /* Darker red on hover */
+        }
+        .footer {
+            background-color: #2e7d32;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            border-radius: 0 0 10px 10px;
+        }
+        .footer a {
+            color: #ffccbc; /* Light orange link */
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -28,30 +98,24 @@
         </div>
         <div class="content">
             <p>Dear [User Name],</p>
-            <p>Thank you for registering with <strong>HealthTriage</strong>! We are thrilled to have you join our community of health-conscious individuals. At HealthTriage, we are committed to providing you with the best telemedicine experience.</p>
+            <p>Thank you for joining <strong>HealthTriage</strong>. We are committed to providing you with the best telemedicine experience.</p>
             <p>Here’s what you can do with your account:</p>
             <ul class="feature-list">
-                <li><img src="https://www.flaticon.com/svg/512/512895.svg" alt="Appointment Icon"> <strong>Book Appointments:</strong> Schedule virtual consultations with top doctors and specialists.</li>
-                <li><img src="https://www.flaticon.com/svg/512/512896.svg" alt="Medical Records Icon"> <strong>Access Medical Records:</strong> Securely view and manage your health records anytime.</li>
-                <li><img src="https://www.flaticon.com/svg/512/512897.svg" alt="Health Tips Icon"> <strong>Personalized Health Tips:</strong> Receive tailored health advice based on your profile.</li>
-                <li><img src="https://www.flaticon.com/svg/512/512898.svg" alt="AI Icon"> <strong>AI Symptom Checker:</strong> Get instant recommendations for your symptoms.</li>
-                <li><img src="https://www.flaticon.com/svg/512/512899.svg" alt="Doctor Icon"> <strong>24/7 Doctor Support:</strong> Connect with medical practitioners anytime.</li>
-                <li><img src="https://www.flaticon.com/svg/512/512900.svg" alt="Wellness Icon"> <strong>Wellness Articles:</strong> Read and share articles on medical wellness and health tips.</li>
-                <li><img src="https://www.flaticon.com/svg/512/512901.svg" alt="Pharmacy Icon"> <strong>Online Pharmacy:</strong> Get details about medical facilities close to your doorstep</li>
+                <li><strong>Book Appointments:</strong> Schedule virtual consultations with top doctors and specialists.</li>
+                <li><strong>Access Medical Records:</strong> Securely view and manage your health records anytime.</li>
+                <li><strong>Personalized Health Tips:</strong> Get tailored advice based on your profile.</li>
+                <li><strong>AI Symptom Checker:</strong> Receive instant recommendations based on your symptoms.</li>
+                <li><strong>24/7 Doctor Support:</strong> Connect with medical professionals anytime.</li>
+                <li><strong>Health & Wellness Articles:</strong> Stay informed with expert health insights.</li>
+                <li><strong>Online Pharmacy:</strong> Search for available pharmacies close to you.</li>
             </ul>
-            <p>To get started, click the button below:</p>
+            <p>Click below to get started:</p>
             <a href="[Dashboard Link]" class="cta-button">Explore Your Dashboard</a>
-            <p>If you have any questions or need assistance, feel free to reach out to our support team at <a href="mailto:support@healthtriage.com">support@healthtriage.com</a>.</p>
-            <div class="social-links">
-                Follow us on:
-                <a href="[Facebook Link]">Facebook</a> |
-                <a href="[Twitter Link]">Twitter</a> |
-                <a href="[LinkedIn Link]">LinkedIn</a>
-            </div>
+            <p>For assistance, contact us at <a href="mailto:support@healthtriage.com">support@healthtriage.com</a>.</p>
         </div>
         <div class="footer">
             <p>Best regards,<br><strong>The HealthTriage Team</strong></p>
-            <p>You are receiving this email because you registered on <a href="[Website Link]">HealthTriage</a>. If this was not you, please <a href="[Unsubscribe Link]">unsubscribe</a>.</p>
+            <p>You received this email because you registered on <a href="[Website Link]">HealthTriage</a>. If this was not you, please <a href="[Unsubscribe Link]">unsubscribe</a>.</p>
         </div>
     </div>
 </body>

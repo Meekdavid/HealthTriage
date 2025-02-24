@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Confirmation</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f9f9f9, #e3f2fd);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 500px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .message {
+            font-size: 18px;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        .success {
+            color: #28a745;
+            background-color: #e8f5e9;
+            border: 1px solid #c8e6c9;
+        }
+
+        .error {
+            color: #dc3545;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+            .btn:hover {
+                background-color: #0056b3;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+            }
+
+            .btn:active {
+                transform: translateY(0);
+                box-shadow: none;
+            }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .message {
+                font-size: 16px;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="icon"></div>
+        <h2>Email Confirmation</h2>
+        <p id="message" class="message"></p>
+        <div id="action"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get query params from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const email = urlParams.get('email');
+            const success = urlParams.get('success');
+            const message = urlParams.get('message');
+            fetch(`/api/auth/get-confirmation-page?email=${encodeURIComponent(email)}&success=${success}&message=${encodeURIComponent(message)}`)
+                .then(response => response.json())
+                .then(data => {
+                    const messageElement = document.getElementById("message");
+                    console.log("Response from page confirmation api:", data);
+
+                    // Use data.success directly
+                    messageElement.textContent = data.message;
+                    messageElement.className = data.success ? "message success" : "message error";
+
+                    document.getElementById("icon").innerHTML = data.success
+                        ? `<div class="icon success-icon">✅</div>`
+                        : `<div class="icon error-icon">❌</div>`;
+
+                    const actionElement = document.getElementById("action");
+                    if (data.success) {
+                        actionElement.innerHTML = `<a href="${data.page}" class="btn">Proceed to Login</a>`;
+                    } else {
+                        actionElement.innerHTML = `
+                    <p style="color: #dc3545; font-size: 16px; margin-bottom: 15px;">Confirmation failed. ${data.message}.</p>
+                    <button onclick="resendConfirmation('${data.email}')" class="btn">Resend Confirmation</button>
+                `;
+                    }
+                })
+                .catch(error => {
+                    console.error("Error loading confirmation details:", error);
+                    const messageElement = document.getElementById("message");
+                    messageElement.textContent = "Error loading confirmation details.";
+                    messageElement.className = "message error";
+                });
+        });
+
+
+        function resendConfirmation(email) {
+            fetch('/api/auth/resend-confirmation', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const messageElement = document.getElementById("message");
+                    messageElement.textContent = data.message;
+                    messageElement.className = data.success ? "message success" : "message error";
+                })
+                .catch(error => {
+                    const messageElement = document.getElementById("message");
+                    messageElement.textContent = "Error resending confirmation email.";
+                    messageElement.className = "message error";
+                });
+        }
+    </script>
+</body>
+</html>

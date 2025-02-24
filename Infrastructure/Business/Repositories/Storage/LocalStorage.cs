@@ -77,7 +77,7 @@ namespace Infrastructure.Business.Repositories.Storage
         public async Task<IDataResult<(string fileName, string pathOrContainerName)>> SingleUploadAsync(string path, IFormFile file, HttpContext httpContext)
         {
            //string uploadPath = Path.Combine(ConfigSettings.ApplicationSetting.BaseLocalStorageDomain, path);
-            string uploadPath = Path.Combine("", path);
+            string uploadPath = Path.Combine("wwwroot", path);
 
             if (!Directory.Exists(uploadPath))
                 Directory.CreateDirectory(uploadPath);

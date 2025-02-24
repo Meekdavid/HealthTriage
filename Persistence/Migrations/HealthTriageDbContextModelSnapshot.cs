@@ -17,10 +17,542 @@ namespace Persistence.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.2")
+                .HasAnnotation("ProductVersion", "8.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("AppUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BloodGroup")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DOB")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("EmergencyContact")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Height")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastActive")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ProfilePicture")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RefreshTokenEndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("Weight")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ZipCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique()
+                        .HasFilter("[Email] IS NOT NULL");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("UserName")
+                        .IsUnique()
+                        .HasFilter("[UserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Article", b =>
+                {
+                    b.Property<string>("ArticleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("ArticleState")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AuthorType")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Category")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CoverPhotoUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ArticleId");
+
+                    b.ToTable("Articles");
+                });
+
+            modelBuilder.Entity("ArticleComment", b =>
+                {
+                    b.Property<string>("ArticleCommentId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ArticleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ArticleId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CommentText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ArticleCommentId");
+
+                    b.HasIndex("ArticleId");
+
+                    b.HasIndex("ArticleId1");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ArticleComments");
+                });
+
+            modelBuilder.Entity("ArticleRating", b =>
+                {
+                    b.Property<string>("ArticleRatingId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ArticleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ArticleId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ArticleRatingId");
+
+                    b.HasIndex("ArticleId");
+
+                    b.HasIndex("ArticleId1");
+
+                    b.ToTable("ArticleRatings");
+                });
+
+            modelBuilder.Entity("ArticleView", b =>
+                {
+                    b.Property<string>("ArticleViewId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ArticleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ArticleId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ArticleViewId");
+
+                    b.HasIndex("ArticleId");
+
+                    b.HasIndex("ArticleId1");
+
+                    b.ToTable("ArticleViews");
+                });
+
+            modelBuilder.Entity("CommentReply", b =>
+                {
+                    b.Property<string>("CommentReplyId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CommentId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ReplyText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("CommentReplyId");
+
+                    b.HasIndex("CommentId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CommentReplies");
+                });
+
+            modelBuilder.Entity("ConsultancyChat", b =>
+                {
+                    b.Property<string>("ConsultancyChatId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConsultationHistoryId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ConsultancyChatId");
+
+                    b.HasIndex("ConsultationHistoryId");
+
+                    b.ToTable("ConsultancyChats");
+                });
+
+            modelBuilder.Entity("ConsultationHistory", b =>
+                {
+                    b.Property<string>("ConsultationHistoryId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PractitionerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ConsultationHistoryId");
+
+                    b.HasIndex("PractitionerId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ConsultationHistories");
+                });
+
+            modelBuilder.Entity("Country", b =>
+                {
+                    b.Property<string>("PhoneCode")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CountryName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Flag")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ISOCode2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ISOCode3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PhoneCode");
+
+                    b.ToTable("Countries");
+                });
+
+            modelBuilder.Entity("FAQ", b =>
+                {
+                    b.Property<int?>("FAQId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("FAQId"));
+
+                    b.Property<string>("AddedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Answer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Question")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("FAQId");
+
+                    b.ToTable("FAQs");
+                });
+
+            modelBuilder.Entity("HealthcareFacility", b =>
+                {
+                    b.Property<string>("HealthcareFacilityId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AccreditationStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("EmergencyServicesAvailable")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FacilityName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float?>("FacilityRating")
+                        .HasColumnType("real");
+
+                    b.Property<string>("FacilityType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InsuranceAccepted")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastUpdated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LicenseNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("NumberOfBeds")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OperatingHours")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ServicesOffered")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Specialties")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("StaffCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("WebsiteUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ZipCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("HealthcareFacilityId");
+
+                    b.ToTable("HealthcareFacilities");
+                });
+
+            modelBuilder.Entity("Language", b =>
+                {
+                    b.Property<string>("LanguageName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ISOCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("LanguageName");
+
+                    b.ToTable("Languages");
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.DataProtection.EntityFrameworkCore.DataProtectionKey", b =>
                 {
@@ -150,8 +682,7 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Persistence.DBModels.Admin", b =>
                 {
                     b.Property<string>("AdminId")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -177,589 +708,13 @@ namespace Persistence.Migrations
                     b.ToTable("Admins");
                 });
 
-            modelBuilder.Entity("Persistence.DBModels.AppUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BloodGroup")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DOB")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("EmergencyContact")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Height")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("LastActive")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("ProfilePicture")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RefreshToken")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("RefreshTokenEndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("Weight")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ZipCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Email")
-                        .IsUnique()
-                        .HasFilter("[Email] IS NOT NULL");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.HasIndex("UserName")
-                        .IsUnique()
-                        .HasFilter("[UserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers", (string)null);
-                });
-
-            modelBuilder.Entity("Persistence.DBModels.Article", b =>
-                {
-                    b.Property<string>("ArticleId")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<int>("ArticleState")
-                        .HasColumnType("int");
-
-                    b.Property<int>("AuthorType")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Category")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoverPhotoUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ArticleId");
-
-                    b.ToTable("Articles");
-                });
-
-            modelBuilder.Entity("Persistence.DBModels.ArticleComment", b =>
-                {
-                    b.Property<string>("ArticleCommentId")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("ArticleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("ArticleId1")
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CommentText")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("ArticleCommentId");
-
-                    b.HasIndex("ArticleId");
-
-                    b.HasIndex("ArticleId1");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ArticleComments");
-                });
-
-            modelBuilder.Entity("Persistence.DBModels.ArticleRating", b =>
-                {
-                    b.Property<string>("ArticleRatingId")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("ArticleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("ArticleId1")
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ArticleRatingId");
-
-                    b.HasIndex("ArticleId");
-
-                    b.HasIndex("ArticleId1");
-
-                    b.ToTable("ArticleRatings");
-                });
-
-            modelBuilder.Entity("Persistence.DBModels.ArticleView", b =>
-                {
-                    b.Property<string>("ArticleViewId")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("ArticleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("ArticleId1")
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ArticleViewId");
-
-                    b.HasIndex("ArticleId");
-
-                    b.HasIndex("ArticleId1");
-
-                    b.ToTable("ArticleViews");
-                });
-
-            modelBuilder.Entity("Persistence.DBModels.CommentReply", b =>
-                {
-                    b.Property<string>("CommentReplyId")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CommentId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ReplyText")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("CommentReplyId");
-
-                    b.HasIndex("CommentId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("CommentReplies");
-                });
-
-            modelBuilder.Entity("Persistence.DBModels.ConsultancyChat", b =>
-                {
-                    b.Property<string>("ConsultancyChatId")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("ConsultationHistoryId")
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ConsultancyChatId");
-
-                    b.HasIndex("ConsultationHistoryId");
-
-                    b.ToTable("ConsultancyChats");
-                });
-
-            modelBuilder.Entity("Persistence.DBModels.ConsultationHistory", b =>
-                {
-                    b.Property<string>("ConsultationHistoryId")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PractitionerId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("ConsultationHistoryId");
-
-                    b.HasIndex("PractitionerId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ConsultationHistories");
-                });
-
-            modelBuilder.Entity("Persistence.DBModels.Country", b =>
-                {
-                    b.Property<string>("PhoneCode")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CountryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Flag")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ISOCode2")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ISOCode3")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("PhoneCode");
-
-                    b.ToTable("Countries");
-                });
-
-            modelBuilder.Entity("Persistence.DBModels.FAQ", b =>
-                {
-                    b.Property<int>("FAQId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FAQId"));
-
-                    b.Property<string>("AddedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Answer")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Question")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.HasKey("FAQId");
-
-                    b.ToTable("FAQs");
-                });
-
-            modelBuilder.Entity("Persistence.DBModels.HealthcareFacility", b =>
-                {
-                    b.Property<string>("HealthcareFacilityId")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("AccreditationStatus")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("EmergencyServicesAvailable")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("FacilityName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<float>("FacilityRating")
-                        .HasColumnType("real");
-
-                    b.Property<string>("FacilityType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InsuranceAccepted")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("LastUpdated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("LicenseNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("NumberOfBeds")
-                        .HasColumnType("int");
-
-                    b.Property<string>("OperatingHours")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ServicesOffered")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Specialties")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("StaffCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("WebsiteUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ZipCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("HealthcareFacilityId");
-
-                    b.ToTable("HealthcareFacilities");
-                });
-
             modelBuilder.Entity("Persistence.DBModels.JoinDBModels.SymptomSearchHistorySymptom", b =>
                 {
                     b.Property<string>("SymptomSearchHistoryId")
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SymptomId")
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("SymptomSearchHistoryId", "SymptomId");
 
@@ -771,10 +726,10 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Persistence.DBModels.JoinDBModels.SymptomSearchHistoryTreatmentOption", b =>
                 {
                     b.Property<string>("SymptomSearchHistoryId")
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("TreatmentOptionId")
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("SymptomSearchHistoryId", "TreatmentOptionId");
 
@@ -783,25 +738,10 @@ namespace Persistence.Migrations
                     b.ToTable("SymptomSearchHistoryTreatmentOption");
                 });
 
-            modelBuilder.Entity("Persistence.DBModels.Language", b =>
-                {
-                    b.Property<string>("LanguageName")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ISOCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("LanguageName");
-
-                    b.ToTable("Languages");
-                });
-
             modelBuilder.Entity("Persistence.DBModels.MedicalActivityLog", b =>
                 {
                     b.Property<string>("MedicalActivityLogId")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("ActivityType")
                         .HasColumnType("int");
@@ -823,7 +763,6 @@ namespace Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("MedicalActivityLogId");
@@ -836,8 +775,7 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Persistence.DBModels.Practitioner", b =>
                 {
                     b.Property<string>("PractitionerId")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ApplicationCertificateUrl")
                         .IsRequired()
@@ -876,8 +814,15 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("Rating")
+                        .HasColumnType("int");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("WorkAddress")
                         .IsRequired()
@@ -887,10 +832,9 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("rating")
-                        .HasColumnType("int");
-
                     b.HasKey("PractitionerId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Practitioners");
                 });
@@ -911,7 +855,7 @@ namespace Persistence.Migrations
 
                     b.Property<string>("PractitionerId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Rating")
                         .HasColumnType("int");
@@ -960,8 +904,7 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Persistence.DBModels.Symptom", b =>
                 {
                     b.Property<string>("SymptomId")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -987,8 +930,7 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Persistence.DBModels.SymptomSearchHistory", b =>
                 {
                     b.Property<string>("SymptomSearchHistoryId")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -1014,8 +956,7 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Persistence.DBModels.TreatmentOption", b =>
                 {
                     b.Property<string>("TreatmentOptionId")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -1048,6 +989,90 @@ namespace Persistence.Migrations
                     b.ToTable("TreatmentOptions");
                 });
 
+            modelBuilder.Entity("ArticleComment", b =>
+                {
+                    b.HasOne("Article", "Article")
+                        .WithMany()
+                        .HasForeignKey("ArticleId");
+
+                    b.HasOne("Article", null)
+                        .WithMany("ArticleComments")
+                        .HasForeignKey("ArticleId1");
+
+                    b.HasOne("AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Article");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ArticleRating", b =>
+                {
+                    b.HasOne("Article", "Article")
+                        .WithMany()
+                        .HasForeignKey("ArticleId");
+
+                    b.HasOne("Article", null)
+                        .WithMany("ArticleRatings")
+                        .HasForeignKey("ArticleId1");
+
+                    b.Navigation("Article");
+                });
+
+            modelBuilder.Entity("ArticleView", b =>
+                {
+                    b.HasOne("Article", "Article")
+                        .WithMany()
+                        .HasForeignKey("ArticleId");
+
+                    b.HasOne("Article", null)
+                        .WithMany("ArticleViews")
+                        .HasForeignKey("ArticleId1");
+
+                    b.Navigation("Article");
+                });
+
+            modelBuilder.Entity("CommentReply", b =>
+                {
+                    b.HasOne("ArticleComment", "ArticleComment")
+                        .WithMany("CommentReplies")
+                        .HasForeignKey("CommentId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("ArticleComment");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ConsultancyChat", b =>
+                {
+                    b.HasOne("ConsultationHistory", null)
+                        .WithMany("ConsultancyChats")
+                        .HasForeignKey("ConsultationHistoryId");
+                });
+
+            modelBuilder.Entity("ConsultationHistory", b =>
+                {
+                    b.HasOne("Persistence.DBModels.Practitioner", "Practitioner")
+                        .WithMany()
+                        .HasForeignKey("PractitionerId");
+
+                    b.HasOne("AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Practitioner");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Persistence.DBModels.Role", null)
@@ -1059,7 +1084,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Persistence.DBModels.AppUser", null)
+                    b.HasOne("AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1068,7 +1093,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Persistence.DBModels.AppUser", null)
+                    b.HasOne("AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1083,7 +1108,7 @@ namespace Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Persistence.DBModels.AppUser", null)
+                    b.HasOne("AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1092,7 +1117,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Persistence.DBModels.AppUser", null)
+                    b.HasOne("AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1101,111 +1126,13 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Persistence.DBModels.Admin", b =>
                 {
-                    b.HasOne("Persistence.DBModels.AppUser", "User")
+                    b.HasOne("AppUser", "User")
                         .WithOne()
                         .HasForeignKey("Persistence.DBModels.Admin", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Persistence.DBModels.ArticleComment", b =>
-                {
-                    b.HasOne("Persistence.DBModels.Article", "Article")
-                        .WithMany()
-                        .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Persistence.DBModels.Article", null)
-                        .WithMany("ArticleComments")
-                        .HasForeignKey("ArticleId1");
-
-                    b.HasOne("Persistence.DBModels.AppUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Article");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Persistence.DBModels.ArticleRating", b =>
-                {
-                    b.HasOne("Persistence.DBModels.Article", "Article")
-                        .WithMany()
-                        .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Persistence.DBModels.Article", null)
-                        .WithMany("ArticleRatings")
-                        .HasForeignKey("ArticleId1");
-
-                    b.Navigation("Article");
-                });
-
-            modelBuilder.Entity("Persistence.DBModels.ArticleView", b =>
-                {
-                    b.HasOne("Persistence.DBModels.Article", "Article")
-                        .WithMany()
-                        .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Persistence.DBModels.Article", null)
-                        .WithMany("ArticleViews")
-                        .HasForeignKey("ArticleId1");
-
-                    b.Navigation("Article");
-                });
-
-            modelBuilder.Entity("Persistence.DBModels.CommentReply", b =>
-                {
-                    b.HasOne("Persistence.DBModels.ArticleComment", "ArticleComment")
-                        .WithMany("CommentReplies")
-                        .HasForeignKey("CommentId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("Persistence.DBModels.AppUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("ArticleComment");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Persistence.DBModels.ConsultancyChat", b =>
-                {
-                    b.HasOne("Persistence.DBModels.ConsultationHistory", null)
-                        .WithMany("ConsultancyChats")
-                        .HasForeignKey("ConsultationHistoryId");
-                });
-
-            modelBuilder.Entity("Persistence.DBModels.ConsultationHistory", b =>
-                {
-                    b.HasOne("Persistence.DBModels.Practitioner", "Practitioner")
-                        .WithMany()
-                        .HasForeignKey("PractitionerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Persistence.DBModels.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-
-                    b.Navigation("Practitioner");
                 });
 
             modelBuilder.Entity("Persistence.DBModels.JoinDBModels.SymptomSearchHistorySymptom", b =>
@@ -1248,7 +1175,16 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Persistence.DBModels.MedicalActivityLog", b =>
                 {
-                    b.HasOne("Persistence.DBModels.AppUser", "User")
+                    b.HasOne("AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Persistence.DBModels.Practitioner", b =>
+                {
+                    b.HasOne("AppUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1268,7 +1204,7 @@ namespace Persistence.Migrations
                     b.Navigation("Practitioner");
                 });
 
-            modelBuilder.Entity("Persistence.DBModels.Article", b =>
+            modelBuilder.Entity("Article", b =>
                 {
                     b.Navigation("ArticleComments");
 
@@ -1277,12 +1213,12 @@ namespace Persistence.Migrations
                     b.Navigation("ArticleViews");
                 });
 
-            modelBuilder.Entity("Persistence.DBModels.ArticleComment", b =>
+            modelBuilder.Entity("ArticleComment", b =>
                 {
                     b.Navigation("CommentReplies");
                 });
 
-            modelBuilder.Entity("Persistence.DBModels.ConsultationHistory", b =>
+            modelBuilder.Entity("ConsultationHistory", b =>
                 {
                     b.Navigation("ConsultancyChats");
                 });

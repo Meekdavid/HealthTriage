@@ -30,7 +30,7 @@ namespace Infrastructure.Middleware
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"An unhandled exception has occurred on {GetClassName(ex)} - {GetMethodName(ex)} : {ex.Message}");
+                _logger.LogInformation(ex, $"An unhandled exception has occurred on {GetClassName(ex)} - {GetMethodName(ex)} : {ex.Message}");
                 await HandleExceptionAsync(context, ex);
             }
         }

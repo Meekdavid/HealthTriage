@@ -1,10 +1,12 @@
 ﻿using Common.ConfigurationSettings;
 using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Persistence.Concrete;
 using Persistence.DBModels;
 using Persistence.DBModels.JoinDBModels;
@@ -26,72 +28,73 @@ namespace Persistence.DBContext
 
 
         // Override SaveChanges to disable validation
-        public override int SaveChanges(bool acceptAllChangesOnSuccess)
-        {
-            foreach (var entry in ChangeTracker.Entries())
-            {
-                entry.State = EntityState.Detached;
-            }
 
-            return base.SaveChanges(acceptAllChangesOnSuccess);
-        }
+        //public override int SaveChanges(bool acceptAllChangesOnSuccess)
+        //{
+        //    foreach (var entry in ChangeTracker.Entries())
+        //    {
+        //        entry.State = EntityState.Detached;
+        //    }
 
-        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
-        {
-            foreach (var entry in ChangeTracker.Entries())
-            {
-                entry.State = EntityState.Detached;
-            }
+        //    return base.SaveChanges(acceptAllChangesOnSuccess);
+        //}
 
-            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
-        }
+        //public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
+        //{
+        //    foreach (var entry in ChangeTracker.Entries())
+        //    {
+        //        entry.State = EntityState.Detached;
+        //    }
+
+        //    return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        //}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
-            {
-                var entityName = entityType.ClrType.Name;
-                var primaryKeyName = $"{entityName}Id";
+            //foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            //{
+            //    var entityName = entityType.ClrType.Name;
+            //    var primaryKeyName = $"{entityName}Id";
 
-                var property = entityType.FindProperty(primaryKeyName);
-                if (property != null && property.ClrType == typeof(string))
-                {
-                    modelBuilder.Entity(entityType.ClrType)
-                                .Property(primaryKeyName)
-                                .HasMaxLength(25);
-                }
+            //    var property = entityType.FindProperty(primaryKeyName);
+            //    if (property != null && property.ClrType == typeof(string))
+            //    {
+            //        modelBuilder.Entity(entityType.ClrType)
+            //                    .Property(primaryKeyName)
+            //                    .HasMaxLength(25);
+            //    }
 
-                foreach (var component in entityType.GetProperties())
-                {
-                    if (component.ClrType == typeof(DateTime) || component.ClrType == typeof(DateTime?))
-                    {
-                        component.SetValueConverter(new ValueConverter<DateTime, DateTime>(
-                            v => v.ToUniversalTime(),
-                            v => DateTime.SpecifyKind(v, DateTimeKind.Utc)
-                        ));
-                    }
-                }
-            }
+            //    foreach (var component in entityType.GetProperties())
+            //    {
+            //        if (component.ClrType == typeof(DateTime) || component.ClrType == typeof(DateTime?))
+            //        {
+            //            component.SetValueConverter(new ValueConverter<DateTime, DateTime>(
+            //                v => v.ToUniversalTime(),
+            //                v => DateTime.SpecifyKind(v, DateTimeKind.Utc)
+            //            ));
+            //        }
+            //    }
+            //}
 
-            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
-            {
-                if (typeof(HealthTriageEntity).IsAssignableFrom(entityType.ClrType))
-                {
-                    if (entityType.ClrType.BaseType == typeof(Language) || entityType.ClrType.BaseType == typeof(Role) || entityType.ClrType.BaseType == typeof(Country))
-                    {
-                        continue;
-                    }
+            //foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            //{
+            //    if (typeof(HealthTriageEntity).IsAssignableFrom(entityType.ClrType))
+            //    {
+            //        if (entityType.ClrType.BaseType == typeof(Language) || entityType.ClrType.BaseType == typeof(Role) || entityType.ClrType.BaseType == typeof(Country))
+            //        {
+            //            continue;
+            //        }
 
-                    var parameter = Expression.Parameter(entityType.ClrType, "x");
-                    var property = Expression.Property(parameter, "Status");
-                    var deletedStatus = Expression.Constant(Status.Deleted);
-                    var condition = Expression.NotEqual(property, deletedStatus);
+            //        var parameter = Expression.Parameter(entityType.ClrType, "x");
+            //        var property = Expression.Property(parameter, "Status");
+            //        var deletedStatus = Expression.Constant(Status.Deleted);
+            //        var condition = Expression.NotEqual(property, deletedStatus);
 
-                    var lambda = Expression.Lambda(condition, parameter);
+            //        var lambda = Expression.Lambda(condition, parameter);
 
-                    modelBuilder.Entity(entityType.ClrType).HasQueryFilter(lambda);
-                }
-            }
+            //        modelBuilder.Entity(entityType.ClrType).HasQueryFilter(lambda);
+            //    }
+            //}
 
             modelBuilder.Entity<SymptomSearchHistorySymptom>()
                 .HasKey(ss => new { ss.SymptomSearchHistoryId, ss.SymptomId });
@@ -214,6 +217,9 @@ namespace Persistence.DBContext
             modelBuilder.Entity<Practitioner>(entity =>
             {
                 entity.HasKey(e => e.PractitionerId);
+                entity.HasOne(e => e.User)
+                      .WithMany()
+                      .HasForeignKey(e => e.UserId);
             });
 
             modelBuilder.Entity<PractitionerRating>(entity =>
@@ -268,9 +274,36 @@ namespace Persistence.DBContext
         {
 
             string connectionString = ConfigSettings.ConnectionString.DefaultConnection;
+
+            // Define log file path
+            string logFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Error", "OnBuild", "log.txt");
+
+            // Ensure the directory exists
+            string logDirectory = Path.GetDirectoryName(logFilePath);
+            if (!Directory.Exists(logDirectory))
+            {
+                Directory.CreateDirectory(logDirectory);
+            }
+
+            // Create a delegate-based logging mechanism to avoid locking issues
             optionsBuilder.UseSqlServer(connectionString)
                 .EnableSensitiveDataLogging()
-                .LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
+                .LogTo(Console.WriteLine, LogLevel.Information) // Log to Console
+                .LogTo(message =>
+                {
+                    try
+                    {
+                        // Append text without locking the file
+                        using (StreamWriter writer = File.AppendText(logFilePath))
+                        {
+                            writer.WriteLine(message);
+                        }
+                    }
+                    catch (IOException ex)
+                    {
+                        Console.WriteLine("Logging error: " + ex.Message);
+                    }
+                }, LogLevel.Information);
 
         }
 

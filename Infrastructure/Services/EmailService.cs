@@ -16,7 +16,7 @@ namespace Infrastructure.Repositories
         private readonly ILogger<EmailService> _logger;
         private readonly string _smtpServer = ConfigSettings.ApplicationSetting.EmailDetails.SMTPServer;
         private readonly int _smtpPort = ConfigSettings.ApplicationSetting.EmailDetails.Port; // Use 465 for SSL, 587 for TLS
-        private readonly string _smtpUser = AESHelper.Decrypt(ConfigSettings.ApplicationSetting.EmailDetails.UserName) ?? "MS_WtsoKH@trial-3vz9dlen3r1lkj50.mlsender.net";
+        private readonly string _smtpUser = AESHelper.Decrypt(ConfigSettings.ApplicationSetting.EmailDetails.UserName) ?? /*"mbokodavid@gmail.com"*/"MS_WtsoKH@trial-3vz9dlen3r1lkj50.mlsender.net";
         private readonly string _smtpPass = AESHelper.Decrypt(ConfigSettings.ApplicationSetting.EmailDetails.Password) ?? "mssp.Skh7zVF.ynrw7gyqd2n42k8e.djbqXKt" /*"ednnppsbnlhjykav"*/;
         private readonly SmtpClient _smtpClient;
 
@@ -51,7 +51,7 @@ namespace Infrastructure.Repositories
             catch (Exception ex)
             {
             }
-            
+
         }
 
         public async Task SendPasswordResetToken(string email, string callbackUrl)
@@ -101,8 +101,31 @@ namespace Infrastructure.Repositories
             // Create the HTML body
             var bodyBuilder = new BodyBuilder
             {
-                HtmlBody = $"Please confirm your account by clicking this link: <a href='{confirmationLink}'>link</a>. The link will expire in 1 day."
+                HtmlBody = $@"
+        <p style='font-family: Arial, sans-serif; font-size: 16px; color: #333;'> 
+            Hello and welcome to <strong>HealthTriage</strong>! 🎉  
+        </p> 
+        <p style='font-family: Arial, sans-serif; font-size: 16px; color: #333;'>  
+            You're just one step away from unlocking a world of expert healthcare at your fingertips.  
+            To activate your account, simply click the button below:  
+        </p>  
+        <p style='text-align: center;'>  
+            <a href='{confirmationLink}' 
+               style='background-color: #4CAF50; color: white; padding: 12px 20px; text-decoration: none; font-size: 16px; border-radius: 5px; display: inline-block;'> 
+                Confirm My Account 
+            </a>  
+        </p>  
+        <p style='font-family: Arial, sans-serif; font-size: 14px; color: #555;'>  
+            This link will expire in <strong>24 hours</strong>. If you didn’t sign up for HealthTriage, you can safely ignore this email.  
+        </p>  
+        <p style='font-family: Arial, sans-serif; font-size: 14px; color: #555;'>  
+            Stay healthy, stay informed! 💙  
+        </p>  
+        <p style='font-family: Arial, sans-serif; font-size: 14px; color: #555;'>  
+            — The HealthTriage Team  
+        </p>"
             };
+
             mailMessage.Body = bodyBuilder.ToMessageBody();
 
             // Ensure the SMTP client is connected

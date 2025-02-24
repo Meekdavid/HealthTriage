@@ -1,23 +1,19 @@
 ﻿using Persistence.Concrete;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Persistence.Enums;
 
-namespace Persistence.DBModels
+public class FAQ : HealthTriageEntity
 {
-    public class FAQ : HealthTriageEntity
+    public FAQ()
     {
-        public FAQ()
-        {
-            Status = Status.Active;
-        }
-        public int FAQId { get; set; }
-        public string Question { get; set; }
-        public string Answer { get; set; }
-        public string AddedBy { get; set; }
+        Status = Status.Active;
+        FAQId = 0;
+        Question = string.Empty;
+        Answer = string.Empty;
+        AddedBy = string.Empty;
     }
+
+    public int? FAQId { get; set; }
+    public string? Question { get; set; }
+    public string? Answer { get; set; }
+    public string? AddedBy { get; set; }
 }

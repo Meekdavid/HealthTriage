@@ -1,9 +1,5 @@
 ﻿using Persistence.Concrete;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Persistence.Enums;
 
 namespace Persistence.DBModels
@@ -12,9 +8,23 @@ namespace Persistence.DBModels
     {
         public Practitioner()
         {
-            Status = Status.Active;
+            Status = Status.Passive;
+            PractitionerId = string.Empty;
+            PractitionerTitle = string.Empty;
+            PractitionerName = string.Empty;
+            MedicalLicenseNumber = string.Empty;
+            Experience = string.Empty;
+            Institution = string.Empty;
+            WorkAddress = string.Empty;
+            WorkEmail = string.Empty;
+            GovernmentId = string.Empty;
+            ApplicationCertificateUrl = string.Empty;
+            Rating = null; // Nullable
         }
+
         public string PractitionerId { get; set; }
+        public string UserId { get; set; }
+        public AppUser User { get; set; }
         public string PractitionerTitle { get; set; }
         public string PractitionerName { get; set; }
         public string MedicalLicenseNumber { get; set; }
@@ -24,6 +34,6 @@ namespace Persistence.DBModels
         public string WorkEmail { get; set; }
         public string GovernmentId { get; set; }
         public string ApplicationCertificateUrl { get; set; }
-        public int? rating { get; set; }
+        public int? Rating { get; set; } // Nullable for flexibility
     }
 }

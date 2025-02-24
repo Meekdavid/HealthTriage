@@ -1,35 +1,36 @@
 ﻿using Common.Enums;
 using Persistence.Concrete;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Persistence.Enums;
+using Persistence.DBModels;
 
-namespace Persistence.DBModels
+public class Article : HealthTriageEntity
 {
-    public class Article : HealthTriageEntity
+    public Article()
     {
-        public Article()
-        {
-            Status = Status.Active;
-            ArticleViews = new HashSet<ArticleView>();
-            ArticleRatings = new HashSet<ArticleRating>();
-            ArticleComments = new HashSet<ArticleComment>();
-        }
-        public string ArticleId { get; set; }
-        public string CoverPhotoUrl { get; set; }
-        public string? UserId { get; set; }
-        public string Title { get; set; }
-        public string Content { get; set; }
-        public ArticleCategory Category { get; set; }
-        public AuthorType AuthorType { get; set; } // "User" or "Practitioner"
-        public ArticleStatus ArticleState { get; set; } // "Published", "Draft", "Pending Review"
-        // Navigation properties
-        public virtual ICollection<ArticleView> ArticleViews { get; set; }
-        public virtual ICollection<ArticleRating> ArticleRatings { get; set; }
-        public virtual ICollection<ArticleComment> ArticleComments { get; set; }
+        ArticleId = string.Empty;
+        CoverPhotoUrl = string.Empty;
+        UserId = string.Empty;
+        Title = string.Empty;
+        Content = string.Empty;
+        Category = default;  // Default enum value (first item in the enum)
+        AuthorType = default;
+        ArticleState = default;
+
+        ArticleViews = new HashSet<ArticleView>();
+        ArticleRatings = new HashSet<ArticleRating>();
+        ArticleComments = new HashSet<ArticleComment>();
     }
+
+    public string? ArticleId { get; set; }
+    public string? CoverPhotoUrl { get; set; }
+    public string? UserId { get; set; }
+    public string? Title { get; set; }
+    public string? Content { get; set; }
+    public ArticleCategory? Category { get; set; }
+    public AuthorType? AuthorType { get; set; }
+    public ArticleStatus? ArticleState { get; set; }
+
+    // Navigation properties
+    public virtual ICollection<ArticleView> ArticleViews { get; set; }
+    public virtual ICollection<ArticleRating> ArticleRatings { get; set; }
+    public virtual ICollection<ArticleComment> ArticleComments { get; set; }
 }

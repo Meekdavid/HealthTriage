@@ -39,6 +39,7 @@ namespace Domain.Literals
 
         /***** STATUS MESSAGES *****/
         public const string StatusMessage_Success = "Request Successful.";
+        public const string StatusMessage_SuccessEmailConfirmation = "Email Confirmation Successful.";
         public const string StatusMessage_Failure = "Request Failed";
         public const string StatusMessage_Duplicate = "Failed: Duplicate RequestID";
         public const string StatusMessage_DirectoryNotFound = "Directory not found.";

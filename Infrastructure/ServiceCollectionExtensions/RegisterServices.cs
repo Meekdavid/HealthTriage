@@ -42,7 +42,6 @@ namespace Common.ServiceCollectionExtensions
 {
     public static class RegisterServices
     {
-        [Obsolete]
         public static IServiceCollection AddHealthTriageServiceLibraryServices(this IServiceCollection services)
         {
 
@@ -63,42 +62,16 @@ namespace Common.ServiceCollectionExtensions
                 loggingBuilder.AddDebug();
             });
 
-            //services.AddScoped<RoleManager<Role>>();
-            //services.AddScoped<UserManager<AppUser>>();
-
             //Database Configuration
             services.AddDbContext<HealthTriageDbContext>(options =>
                 options.UseSqlServer(ConfigSettings.ConnectionString.DefaultConnection));
-
-            //services.AddIdentity<AppUser, Role>().AddEntityFrameworkStores<HealthTriageDbContext>().AddDefaultTokenProviders()
-            //        .AddTokenProvider<EmailTokenProvider<AppUser>>("email");
 
             services.AddIdentity<AppUser, Role>()
                 .AddEntityFrameworkStores<HealthTriageDbContext>()
                 .AddDefaultTokenProviders();
 
-
-            //services.AddIdentity<AppUser, Role>(options =>
-            //{
-            //    options.Password.RequireDigit = true;
-            //    options.Password.RequiredLength = 6;
-            //    options.Password.RequireNonAlphanumeric = false;
-            //    options.Password.RequireUppercase = true;
-            //    options.Password.RequireLowercase = true;
-            //    options.Password.RequiredUniqueChars = 1;
-            //});
-            //    .AddEntityFrameworkStores<HealthTriageDbContext>()
-            //    .AddDefaultTokenProviders();
-
-            services.AddDataProtection()
-                .PersistKeysToDbContext<HealthTriageDbContext>();
-
-            // Add services to the container
-            services.AddControllers(options =>
-            {
-                options.Filters.Add(typeof(CustomValidationFilter));
-            })
-            .AddFluentValidation();
+            //services.AddDataProtection()
+            //    .PersistKeysToDbContext<HealthTriageDbContext>();
 
             services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -126,8 +99,7 @@ namespace Common.ServiceCollectionExtensions
                     ValidateLifetime = true
                 };
             });
-            services.AddDbContext<HealthTriageDbContext>();
-            // CORS Configuration (Allow Everything)
+
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll", builder =>
