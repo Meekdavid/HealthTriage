@@ -36,6 +36,9 @@ namespace Domain.Literals
         public const string StatusCode_UserEmailAlreadyConfirmed = "24";
         public const string StatusCode_ConfirtmationLinkExpired = "25";
         public const string StatusCode_FailedToGenerateConfirmationToken = "26";
+        public const string StatusCode_NoFacilityFound = "27";
+        public const string StatusCode_NoCitiesFound = "28";
+        public const string StatusCode_ArticleNotFound = "29";
 
         /***** STATUS MESSAGES *****/
         public const string StatusMessage_Success = "Request Successful.";
@@ -47,8 +50,10 @@ namespace Domain.Literals
         public const string StatusMessage_RoleAssignmentFailed = "Role assignment failed";
         public const string StatusMessage_WrongInput = "Wrong Input Supplied.";
         public const string StatusMessage_UserCreationFailed = "User creation failed";
+        public const string StatusMessage_ArticleNotFound = "Article Not Found";
         public const string StatusMessage_UserEmailNotConfirmed = "Please confirm email";
         public const string StatusMessage_UserEmailAlreadyConfirmed = "Please confirm email";
+        public const string StatusMessage_NoFacilityFound = "No Facilities Found in {Region}";
         public const string StatusMessage_FailedToGenerateConfirmationToken = "Failed to Generate Confirmation Token";
         public const string StatusMessage_ConfirmationMailSent = "Confirmation link sent to your email";
         public const string StatusMessage_UserNotFound = "User not found.";

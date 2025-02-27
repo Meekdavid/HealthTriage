@@ -6,9 +6,5 @@ namespace API.Controllers
     [Route("api/articles")]
     public class HealthArticlesController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
     }
 }

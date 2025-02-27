@@ -1,4 +1,4 @@
-﻿using Domain.Interfaces;
+﻿using Domain.Interfaces.Database;
 using Persistence.DBContext;
 using Persistence.DBModels;
 using System;
@@ -13,6 +13,11 @@ namespace Infrastructure.DataAccess.Repositories
     {
         public LanguageRepository(HealthTriageDbContext healthTriageContext) : base(healthTriageContext)
         {
+        }
+
+        public async Task<IQueryable<Language>> GetAllLanguages()
+        {
+            return _ctx.Languages.Where(a => !string.IsNullOrEmpty(a.ISOCode));
         }
     }
 }

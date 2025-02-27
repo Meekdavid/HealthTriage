@@ -9,7 +9,7 @@ using Common.Models;
 using Common.Pagination;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Domain.Interfaces
+namespace Domain.Interfaces.Database
 {
     public interface IPractitionerRepository : IGenericRepository<Practitioner>
     {

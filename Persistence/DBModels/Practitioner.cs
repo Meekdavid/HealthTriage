@@ -34,6 +34,7 @@ namespace Persistence.DBModels
         public string WorkEmail { get; set; }
         public string GovernmentId { get; set; }
         public string ApplicationCertificateUrl { get; set; }
-        public int? Rating { get; set; } // Nullable for flexibility
+        public double? Rating { get; set; }
+        public int? TotalRating { get; set; }
     }
 }

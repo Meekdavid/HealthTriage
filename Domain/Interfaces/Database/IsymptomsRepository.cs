@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Interfaces
+namespace Domain.Interfaces.Database
 {
-    public interface ICountryRepository : IGenericRepository<Country>
+    public interface IsymptomsRepository : IGenericRepository<Symptom>
     {
     }
 }

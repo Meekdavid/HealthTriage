@@ -1,4 +1,5 @@
-﻿using Common.Models;
+﻿using Common.DTOs;
+using Common.Models;
 using Common.Pagination;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Interfaces.PractitionerBusiness
+namespace Domain.Interfaces.Business
 {
     public interface IpractitioerBusiness
     {
@@ -17,9 +18,9 @@ namespace Domain.Interfaces.PractitionerBusiness
         Task<Core.Results.IResult> RatePractitioner(int rate, string Id);
         Task<Core.Results.IResult> DeletePractitioner(string id);
         Task<Core.Results.IResult> ApprovePractitionerApplication(string id);
-        Task<IDataResult<PaginatedList<Practitioner>>> RetrieveAllPractitioners(int pageIndex, int pageSize);
-        Task<IDataResult<PaginatedList<Practitioner>>> RetrieveUnapprovedPractitioners(int pageIndex, int pageSize);
-        Task<IDataResult<PaginatedList<Practitioner>>> SearchPractitioners(int pageIndex, int pageSize);
-        Task<IDataResult<Practitioner>> RetrievePractitionerById(string Id);
+        Task<IDataResult<PaginatedList<PractitionerResponseDto>>> RetrieveAllPractitioners(int pageIndex, int pageSize);
+        Task<IDataResult<PaginatedList<PractitionerResponseDto>>> RetrieveUnapprovedPractitioners(int pageIndex, int pageSize);
+        Task<IDataResult<PaginatedList<PractitionerResponseDto>>> SearchPractitioners(int pageIndex, int pageSize, string searchString);
+        Task<IDataResult<PractitionerResponseDto>> RetrievePractitionerById(string Id);
     }
 }

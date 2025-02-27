@@ -1,4 +1,7 @@
-﻿using Common.Models;
+﻿using Common.DTOs;
+using Common.Enums;
+using Common.Models;
+using Common.Pagination;
 using Core.Results;
 using Microsoft.AspNetCore.Http;
 using Persistence.DBModels;
@@ -24,5 +27,8 @@ namespace Domain.Interfaces
         Task<IDataResult<string>> GenerateEmailConfirmationTokenAsync(AppUser email);
         Task<IDataResult<string>> ConfirmEmailAsync(string email, string token);
         Task<IDataResult<string>> ResendConfirmationEmail(string email);
+        Task<IDataResult<UserProfileDTO>> RetrieveUserById(string Id);
+        Task<IDataResult<PaginatedList<UserProfileDTO>>> RetrieveUserByType(int pageIndex, int pageSize, AuthorType type);
+        Task<IDataResult<PaginatedList<UserProfileDTO>>> RetrieveAllUsers(int pageIndex, int pageSize);
     }
 }

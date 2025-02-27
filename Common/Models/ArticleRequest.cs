@@ -1,4 +1,5 @@
 ﻿using Common.Enums;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Common.Models
     public class ArticleRequest
     {
         public string? UserId { get; set; }
+        public IFormFile? CoverPhoto { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
         public ArticleCategory Category { get; set; }

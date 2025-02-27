@@ -109,6 +109,9 @@ namespace Persistence.Migrations
                     b.Property<DateTime?>("RefreshTokenEndDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -765,6 +768,9 @@ namespace Persistence.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("UserType")
+                        .HasColumnType("int");
+
                     b.HasKey("MedicalActivityLogId");
 
                     b.HasIndex("UserId");
@@ -814,10 +820,13 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Rating")
-                        .HasColumnType("int");
+                    b.Property<double?>("Rating")
+                        .HasColumnType("float");
 
                     b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TotalRating")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")

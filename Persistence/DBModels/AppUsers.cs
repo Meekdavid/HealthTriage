@@ -34,6 +34,7 @@ public class AppUser : IdentityUser<string>
     public string? Weight { get; set; }
     public string? EmergencyContact { get; set; }
     public string? RefreshToken { get; set; }
+    public string? Role { get; set; }
     public DateTime? RefreshTokenEndDate { get; set; }
     public DateTime? LastActive { get; set; }
     public DateTime? CreatedDate { get; set; }

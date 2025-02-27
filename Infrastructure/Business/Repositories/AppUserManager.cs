@@ -1,9 +1,14 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Common.AutoMapperProf;
 using Common.ConfigurationSettings;
+using Common.DTOs;
+using Common.Enums;
 using Common.Models;
+using Common.Pagination;
 using Core.Results;
 using Domain.Interfaces;
+using Domain.Interfaces.Database;
 using Infrastructure.DataAccess.Repositories;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Http;
@@ -153,10 +158,6 @@ namespace Infrastructure.Business.Repositories
                 //EmailConfirmed = true
             };
 
-            //AppUser user = new AppUser { Email = userRegisterRequest.Email };
-            //user.UserName = userRegisterRequest.Email;
-            //user.FullName = userRegisterRequest.FullName;
-            //user.LastActive = DateTime.UtcNow;
 
             await _unitOfWork.BeginTransactionAsync();
             _logger.LogInformation($"Transaction started for creating user with Email: {user.Email}");
@@ -475,6 +476,53 @@ namespace Infrastructure.Business.Repositories
                 _logger.LogInformation($"Failed to generate confirmation token for: {email}. Reason: {result.ResponseDescription}");
                 return new ErrorDataResult<string>("", StatusCode_FailedToGenerateConfirmationToken, StatusMessage_FailedToGenerateConfirmationToken);
             }
+        }
+
+        public async Task<IDataResult<UserProfileDTO>> RetrieveUserById(string Id)
+        {
+            _logger.LogInformation($"About Retrieving Practitioner with id {Id}");
+
+            //var existingUser =  _userManager.FindByEmailAsync(Id);
+            var existingUser = await _userDal.GetPractitionerByUserEmail(Id);
+
+            var response = JsonConvert.SerializeObject(existingUser);
+
+            if (existingUser == null)
+            {
+                _logger.LogInformation($"Practitioner not found for PractitionerId: {Id}");
+                return new ErrorDataResult<UserProfileDTO>(null, StatusCode_UserNotFound, StatusMessage_UserNotFound);
+            }
+            var result = _mapper.Map<UserProfileDTO>(existingUser);
+
+            return new SuccessDataResult<UserProfileDTO>(result);
+        }
+
+        public async Task<IDataResult<PaginatedList<UserProfileDTO>>> RetrieveUserByType(int pageIndex, int pageSize, AuthorType type)
+        {
+            _logger.LogInformation($"About Retrieving Review all Practitioners with pageNumber: {pageIndex} and pageSize {pageSize}");
+
+            var users = await _userDal.GetAllUsersByType(type);
+
+            var paginatedResult = await PaginatedList<UserProfileDTO>
+                .CreateAsync(users
+                .ProjectTo<UserProfileDTO>(_mapper.ConfigurationProvider)
+                .AsQueryable(), pageIndex, pageSize);
+
+            return new SuccessDataResult<PaginatedList<UserProfileDTO>>(paginatedResult);
+        }
+
+        public async Task<IDataResult<PaginatedList<UserProfileDTO>>> RetrieveAllUsers(int pageIndex, int pageSize)
+        {
+            _logger.LogInformation($"About Retrieving Review all Practitioners with pageNumber: {pageIndex} and pageSize {pageSize}");
+
+            var users = await _userDal.GetAllUsers();
+
+            var paginatedResult = await PaginatedList<UserProfileDTO>
+                .CreateAsync(users
+                .ProjectTo<UserProfileDTO>(_mapper.ConfigurationProvider)
+                .AsQueryable(), pageIndex, pageSize);
+
+            return new SuccessDataResult<PaginatedList<UserProfileDTO>>(paginatedResult);
         }
     }
 }

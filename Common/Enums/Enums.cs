@@ -19,7 +19,7 @@ namespace Common.Enums
 
     public enum AuthorType
     {
-        User = 0,
+        Patient = 0,
         Practitioner = 1,
     }
 
@@ -80,7 +80,26 @@ namespace Common.Enums
     {
         SymptomSearch = 1,
         PractitionerConsultation,
-        Article
+        Article,
+        RatePractitioner,
+        RateArticle
+    }
+
+    public enum HealthAmenityType
+    {
+        Hospital = 1,
+        Clinic,
+        Doctors,
+        Dentist,
+        Pharmacy,
+        Veterinary,
+        NursingHome,
+        Healthcare,
+        SocialFacility,
+        AlternativeMedicine,
+        BloodDonation,
+        Chiropractor,
+        Physiotherapist
     }
 
 }

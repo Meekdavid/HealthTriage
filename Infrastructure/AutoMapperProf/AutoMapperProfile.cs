@@ -47,10 +47,16 @@ namespace Common.AutoMapperProf
 
             CreateMap<ConsultancyChat, ConsultancyChatResponseDto>();
             CreateMap<FAQ, FAQResponseDto>();
+            CreateMap<CountryResponseDTO, Country>().ReverseMap();
+            CreateMap<UserProfileDTO, AppUser>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role))
+                .ReverseMap();
             CreateMap<HealthcareFacility, HealthcareFacilityResponseDto>();
-            CreateMap<Language, LanguageResponseDto>();
+            CreateMap<Language, LanguageResponseDto>().ReverseMap();
             CreateMap<MedicalActivityLog, MedicalActivityLogResponseDto>()
-            .ForMember(dest => dest.ActivityType, opt => opt.MapFrom(src => src.ActivityType.ToString())); // Converts enum to string
+                .ForMember(dest => dest.TimeOfAction, opt => opt.MapFrom(src => src.CreatedDate))
+            .ForMember(dest => dest.ActivityType, opt => opt.MapFrom(src => src.ActivityType.ToString()));
             CreateMap<Practitioner, PractitionerResponseDto>().ReverseMap();
             CreateMap<Practitioner, PractitionerRequest>().ReverseMap();
             CreateMap<Symptom, SymptomResponseDto>();

@@ -14,6 +14,10 @@ namespace Common.ConfigurationSettings.ConfigModels
         public string BaseLocalStorageDomain { get; set; }
         public string HealthTriageHomePage { get; set; }
         public string HealthTriageUnsubscribeLink { get; set; }
+        public string MedicalFacilityEndpoint { get; set; }
+        public string CitiesofSpecifiedCountry { get; set; }
+        public string CitiesofSpecifiedState { get; set; }
+        public string StatesofSpecifiedCountry { get; set; }
         public int RefreshTokenExpiryDays { get; set; }
     }
 }

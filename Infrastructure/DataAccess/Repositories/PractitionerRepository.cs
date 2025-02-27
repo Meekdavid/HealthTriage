@@ -1,4 +1,4 @@
-﻿using Domain.Interfaces;
+﻿using Domain.Interfaces.Database;
 using Microsoft.EntityFrameworkCore;
 using Persistence.DBContext;
 using Persistence.DBModels;

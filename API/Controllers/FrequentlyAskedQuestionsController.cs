@@ -6,9 +6,5 @@ namespace API.Controllers
     [Route("api/faq")]
     public class FrequentlyAskedQuestionsController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
     }
 }

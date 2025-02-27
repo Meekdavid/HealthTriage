@@ -11,9 +11,10 @@ public class Article : HealthTriageEntity
         UserId = string.Empty;
         Title = string.Empty;
         Content = string.Empty;
-        Category = default;  // Default enum value (first item in the enum)
+        Category = default;
         AuthorType = default;
-        ArticleState = default;
+        ArticleState = ArticleStatus.PendingReview;
+        Status = Persistence.Enums.Status.Active;
 
         ArticleViews = new HashSet<ArticleView>();
         ArticleRatings = new HashSet<ArticleRating>();
@@ -25,6 +26,7 @@ public class Article : HealthTriageEntity
     public string? UserId { get; set; }
     public string? Title { get; set; }
     public string? Content { get; set; }
+    public string? ApprovedBy { get; set; }
     public ArticleCategory? Category { get; set; }
     public AuthorType? AuthorType { get; set; }
     public ArticleStatus? ArticleState { get; set; }

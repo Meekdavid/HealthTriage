@@ -10,7 +10,6 @@ namespace Persistence.DBModels
         public MedicalActivityLog()
         {
             Status = Status.Active;
-            MedicalActivityLogId = string.Empty;
             UserId = string.Empty;
             Details = string.Empty;
             ActivityType = default;
@@ -21,5 +20,6 @@ namespace Persistence.DBModels
         public AppUser? User { get; set; }
         public string Details { get; set; }
         public ActivityType ActivityType { get; set; }
+        public AuthorType UserType { get; set; }
     }
 }

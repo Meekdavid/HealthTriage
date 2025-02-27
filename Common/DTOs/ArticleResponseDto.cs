@@ -17,6 +17,7 @@ namespace Common.DTOs
         public string Category { get; set; }
         public string AuthorType { get; set; }
         public string ArticleState { get; set; }
+        public string ApprovedBy { get; set; }
         public int ViewCount { get; set; }
         public double AverageRating { get; set; }
         public int TotalComments { get; set; }

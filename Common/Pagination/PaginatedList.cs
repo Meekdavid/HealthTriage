@@ -63,5 +63,24 @@ namespace Common.Pagination
                 return new PaginatedList<T>(items, count, pageIndex, pageSize);
             }
         }
+        public static Task<PaginatedList<T>> CreateAsync<T>(List<T> source, int pageIndex = 0, int pageSize = 10)
+        {
+            if (pageIndex == 0)
+            {
+                // Without pagination
+                return Task.FromResult(new PaginatedList<T>(source, source.Count, 1, source.Count));
+            }
+            else
+            {
+                // Pagination
+                var count = source.Count;
+                var items = source.Skip((pageIndex - 1) * pageSize)
+                                  .Take(pageSize)
+                                  .ToList();
+
+                return Task.FromResult(new PaginatedList<T>(items, count, pageIndex, pageSize));
+            }
+        }
+
     }
 }

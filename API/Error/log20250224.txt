@@ -1,0 +1,856 @@
+2025-02-24 04:07:03.719 -08:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-24 04:07:03.922 -08:00 [WRN] The foreign key property 'ArticleComment.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:07:03.940 -08:00 [WRN] The foreign key property 'ArticleRating.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:07:03.945 -08:00 [WRN] The foreign key property 'ArticleView.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:07:05.512 -08:00 [INF] Executed DbCommand (64ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 04:07:05.610 -08:00 [INF] Executed DbCommand (50ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 04:07:05.677 -08:00 [INF] Executed DbCommand (59ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 04:07:05.689 -08:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 04:07:05.736 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-02-24 04:07:05.794 -08:00 [INF] No migrations were applied. The database is already up to date.
+2025-02-24 04:07:05.911 -08:00 [INF] User profile is available. Using 'C:\Users\HP\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 04:07:06.683 -08:00 [INF] Executed DbCommand (48ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:07:06.801 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='PATIENT' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:07:06.812 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='PRACTITIONER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:07:06.846 -08:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedEmail_0='ADMIN@HEALTHTRIAGE.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[BloodGroup], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[DOB], [a].[DeletedDate], [a].[Email], [a].[EmailConfirmed], [a].[EmergencyContact], [a].[FullName], [a].[Gender], [a].[Height], [a].[LastActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[ModifiedDate], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[Weight], [a].[ZipCode]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 04:07:07.086 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Languages] AS [l]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 04:07:07.108 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Countries] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 04:07:07.403 -08:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2025-02-24 04:07:07.888 -08:00 [INF] Now listening on: https://localhost:7005
+2025-02-24 04:07:07.891 -08:00 [INF] Now listening on: http://localhost:5000
+2025-02-24 04:07:08.068 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 04:07:08.070 -08:00 [INF] Hosting environment: Development
+2025-02-24 04:07:08.072 -08:00 [INF] Content root path: C:\Users\HP\OneDrive\Desktop\HealthTriage-master\API
+2025-02-24 04:07:08.744 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/index.html - null null
+2025-02-24 04:07:09.181 -08:00 [INF] HTTP GET /swagger/index.html responded 200 in 208.8232 ms
+2025-02-24 04:07:09.187 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 04:07:09.187 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_vs/browserLink - null null
+2025-02-24 04:07:09.214 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/index.html - 200 null text/html;charset=utf-8 487.208ms
+2025-02-24 04:07:09.219 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 32.7055ms
+2025-02-24 04:07:09.307 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_vs/browserLink - 200 null text/javascript; charset=UTF-8 121.0291ms
+2025-02-24 04:07:09.850 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - null null
+2025-02-24 04:07:09.873 -08:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 17.2445 ms
+2025-02-24 04:07:09.876 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 26.8207ms
+2025-02-24 04:07:45.871 -08:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-24 04:07:45.971 -08:00 [WRN] The foreign key property 'ArticleComment.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:07:45.990 -08:00 [WRN] The foreign key property 'ArticleRating.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:07:45.995 -08:00 [WRN] The foreign key property 'ArticleView.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:07:46.821 -08:00 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 04:07:46.885 -08:00 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 04:07:46.904 -08:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 04:07:46.910 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 04:07:46.938 -08:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-02-24 04:07:46.972 -08:00 [INF] No migrations were applied. The database is already up to date.
+2025-02-24 04:07:47.054 -08:00 [INF] User profile is available. Using 'C:\Users\HP\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 04:07:47.536 -08:00 [INF] Executed DbCommand (36ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:07:47.613 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='PATIENT' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:07:47.625 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='PRACTITIONER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:07:47.649 -08:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='ADMIN@HEALTHTRIAGE.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[BloodGroup], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[DOB], [a].[DeletedDate], [a].[Email], [a].[EmailConfirmed], [a].[EmergencyContact], [a].[FullName], [a].[Gender], [a].[Height], [a].[LastActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[ModifiedDate], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[Weight], [a].[ZipCode]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 04:07:47.807 -08:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Languages] AS [l]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 04:07:47.833 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Countries] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 04:07:48.366 -08:00 [INF] Now listening on: https://localhost:7005
+2025-02-24 04:07:48.367 -08:00 [INF] Now listening on: http://localhost:5000
+2025-02-24 04:07:48.563 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 04:07:48.566 -08:00 [INF] Hosting environment: Development
+2025-02-24 04:07:48.569 -08:00 [INF] Content root path: C:\Users\HP\OneDrive\Desktop\HealthTriage-master\API
+2025-02-24 04:07:49.213 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/index.html - null null
+2025-02-24 04:07:49.587 -08:00 [INF] HTTP GET /swagger/index.html responded 200 in 150.5602 ms
+2025-02-24 04:07:49.604 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/index.html - 200 null text/html;charset=utf-8 412.6415ms
+2025-02-24 04:07:49.616 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 04:07:49.616 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_vs/browserLink - null null
+2025-02-24 04:07:49.636 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 19.4763ms
+2025-02-24 04:07:49.731 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_vs/browserLink - 200 null text/javascript; charset=UTF-8 114.875ms
+2025-02-24 04:07:50.148 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - null null
+2025-02-24 04:07:50.239 -08:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 84.0423 ms
+2025-02-24 04:07:50.247 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 100.1368ms
+2025-02-24 04:08:15.969 -08:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-24 04:08:16.117 -08:00 [WRN] The foreign key property 'ArticleComment.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:08:16.128 -08:00 [WRN] The foreign key property 'ArticleRating.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:08:16.132 -08:00 [WRN] The foreign key property 'ArticleView.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:08:17.008 -08:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 04:08:17.068 -08:00 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 04:08:17.095 -08:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 04:08:17.105 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 04:08:17.141 -08:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-02-24 04:08:17.169 -08:00 [INF] No migrations were applied. The database is already up to date.
+2025-02-24 04:08:17.252 -08:00 [INF] User profile is available. Using 'C:\Users\HP\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 04:08:17.705 -08:00 [INF] Executed DbCommand (37ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:08:17.828 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='PATIENT' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:08:17.836 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='PRACTITIONER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:08:17.862 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='ADMIN@HEALTHTRIAGE.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[BloodGroup], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[DOB], [a].[DeletedDate], [a].[Email], [a].[EmailConfirmed], [a].[EmergencyContact], [a].[FullName], [a].[Gender], [a].[Height], [a].[LastActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[ModifiedDate], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[Weight], [a].[ZipCode]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 04:08:18.088 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Languages] AS [l]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 04:08:18.111 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Countries] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 04:08:18.713 -08:00 [INF] Now listening on: https://localhost:7005
+2025-02-24 04:08:18.714 -08:00 [INF] Now listening on: http://localhost:5000
+2025-02-24 04:08:18.911 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 04:08:18.914 -08:00 [INF] Hosting environment: Development
+2025-02-24 04:08:18.917 -08:00 [INF] Content root path: C:\Users\HP\OneDrive\Desktop\HealthTriage-master\API
+2025-02-24 04:08:19.505 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/index.html - null null
+2025-02-24 04:08:20.024 -08:00 [INF] HTTP GET /swagger/index.html responded 200 in 222.9273 ms
+2025-02-24 04:08:20.038 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/index.html - 200 null text/html;charset=utf-8 556.9771ms
+2025-02-24 04:08:20.114 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_vs/browserLink - null null
+2025-02-24 04:08:20.114 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 04:08:20.139 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 25.6585ms
+2025-02-24 04:08:20.209 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_vs/browserLink - 200 null text/javascript; charset=UTF-8 95.3281ms
+2025-02-24 04:08:20.670 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - null null
+2025-02-24 04:08:20.839 -08:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 162.5837 ms
+2025-02-24 04:08:20.849 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 179.1874ms
+2025-02-24 04:10:01.720 -08:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-24 04:10:01.895 -08:00 [WRN] The foreign key property 'ArticleComment.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:10:01.908 -08:00 [WRN] The foreign key property 'ArticleRating.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:10:01.913 -08:00 [WRN] The foreign key property 'ArticleView.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:10:03.105 -08:00 [INF] Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 04:10:03.183 -08:00 [INF] Executed DbCommand (36ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 04:10:03.199 -08:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 04:10:03.205 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 04:10:03.239 -08:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-02-24 04:10:03.280 -08:00 [INF] No migrations were applied. The database is already up to date.
+2025-02-24 04:10:03.375 -08:00 [INF] User profile is available. Using 'C:\Users\HP\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 04:10:04.001 -08:00 [INF] Executed DbCommand (38ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:10:04.123 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='PATIENT' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:10:04.131 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='PRACTITIONER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:10:04.161 -08:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedEmail_0='ADMIN@HEALTHTRIAGE.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[BloodGroup], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[DOB], [a].[DeletedDate], [a].[Email], [a].[EmailConfirmed], [a].[EmergencyContact], [a].[FullName], [a].[Gender], [a].[Height], [a].[LastActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[ModifiedDate], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[Weight], [a].[ZipCode]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 04:10:04.392 -08:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Languages] AS [l]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 04:10:04.424 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Countries] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 04:10:05.101 -08:00 [INF] Now listening on: https://localhost:7005
+2025-02-24 04:10:05.103 -08:00 [INF] Now listening on: http://localhost:5000
+2025-02-24 04:10:05.391 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 04:10:05.426 -08:00 [INF] Hosting environment: Development
+2025-02-24 04:10:05.429 -08:00 [INF] Content root path: C:\Users\HP\OneDrive\Desktop\HealthTriage-master\API
+2025-02-24 04:10:05.587 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/index.html - null null
+2025-02-24 04:10:06.053 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_vs/browserLink - null null
+2025-02-24 04:10:06.053 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 04:10:06.041 -08:00 [INF] HTTP GET /swagger/index.html responded 200 in 184.0376 ms
+2025-02-24 04:10:06.081 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/index.html - 200 null text/html;charset=utf-8 512.5983ms
+2025-02-24 04:10:06.081 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 25.155ms
+2025-02-24 04:10:06.143 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_vs/browserLink - 200 null text/javascript; charset=UTF-8 90.0281ms
+2025-02-24 04:10:06.669 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - null null
+2025-02-24 04:10:06.812 -08:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 135.6448 ms
+2025-02-24 04:10:06.818 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 149.4257ms
+2025-02-24 04:12:06.329 -08:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-24 04:12:06.448 -08:00 [WRN] The foreign key property 'ArticleComment.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:12:06.468 -08:00 [WRN] The foreign key property 'ArticleRating.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:12:06.473 -08:00 [WRN] The foreign key property 'ArticleView.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:12:07.267 -08:00 [INF] Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 04:12:07.341 -08:00 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 04:12:07.359 -08:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 04:12:07.369 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 04:12:07.397 -08:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-02-24 04:12:07.430 -08:00 [INF] No migrations were applied. The database is already up to date.
+2025-02-24 04:12:07.505 -08:00 [INF] User profile is available. Using 'C:\Users\HP\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 04:12:07.954 -08:00 [INF] Executed DbCommand (27ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:12:08.056 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='PATIENT' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:12:08.065 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='PRACTITIONER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:12:08.097 -08:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedEmail_0='ADMIN@HEALTHTRIAGE.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[BloodGroup], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[DOB], [a].[DeletedDate], [a].[Email], [a].[EmailConfirmed], [a].[EmergencyContact], [a].[FullName], [a].[Gender], [a].[Height], [a].[LastActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[ModifiedDate], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[Weight], [a].[ZipCode]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 04:12:08.348 -08:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Languages] AS [l]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 04:12:08.385 -08:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Countries] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 04:12:09.111 -08:00 [INF] Now listening on: https://localhost:7005
+2025-02-24 04:12:09.113 -08:00 [INF] Now listening on: http://localhost:5000
+2025-02-24 04:12:09.346 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 04:12:09.348 -08:00 [INF] Hosting environment: Development
+2025-02-24 04:12:09.351 -08:00 [INF] Content root path: C:\Users\HP\OneDrive\Desktop\HealthTriage-master\API
+2025-02-24 04:12:09.999 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/index.html - null null
+2025-02-24 04:12:10.445 -08:00 [INF] HTTP GET /swagger/index.html responded 200 in 175.4699 ms
+2025-02-24 04:12:10.484 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 04:12:10.484 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_vs/browserLink - null null
+2025-02-24 04:12:10.512 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/index.html - 200 null text/html;charset=utf-8 535.891ms
+2025-02-24 04:12:10.536 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 52.2296ms
+2025-02-24 04:12:10.639 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_vs/browserLink - 200 null text/javascript; charset=UTF-8 156.0496ms
+2025-02-24 04:12:11.112 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - null null
+2025-02-24 04:12:11.256 -08:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 137.6859 ms
+2025-02-24 04:12:11.262 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 150.13ms
+2025-02-24 04:17:29.608 -08:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-24 04:17:29.754 -08:00 [WRN] The foreign key property 'ArticleComment.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:17:29.769 -08:00 [WRN] The foreign key property 'ArticleRating.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:17:29.774 -08:00 [WRN] The foreign key property 'ArticleView.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:17:30.562 -08:00 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 04:17:30.639 -08:00 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 04:17:30.658 -08:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 04:17:30.666 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 04:17:30.696 -08:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-02-24 04:17:30.729 -08:00 [INF] No migrations were applied. The database is already up to date.
+2025-02-24 04:17:30.806 -08:00 [INF] User profile is available. Using 'C:\Users\HP\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 04:17:31.305 -08:00 [INF] Executed DbCommand (38ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:17:31.447 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='PATIENT' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:17:31.457 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='PRACTITIONER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:17:31.495 -08:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedEmail_0='ADMIN@HEALTHTRIAGE.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[BloodGroup], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[DOB], [a].[DeletedDate], [a].[Email], [a].[EmailConfirmed], [a].[EmergencyContact], [a].[FullName], [a].[Gender], [a].[Height], [a].[LastActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[ModifiedDate], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[Weight], [a].[ZipCode]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 04:17:31.768 -08:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Languages] AS [l]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 04:17:31.799 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Countries] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 04:17:32.517 -08:00 [INF] Now listening on: https://localhost:7005
+2025-02-24 04:17:32.518 -08:00 [INF] Now listening on: http://localhost:5000
+2025-02-24 04:17:32.768 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 04:17:32.802 -08:00 [INF] Hosting environment: Development
+2025-02-24 04:17:32.814 -08:00 [INF] Content root path: C:\Users\HP\OneDrive\Desktop\HealthTriage-master\API
+2025-02-24 04:17:33.259 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/index.html - null null
+2025-02-24 04:17:33.737 -08:00 [INF] HTTP GET /swagger/index.html responded 200 in 172.5089 ms
+2025-02-24 04:17:33.749 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 04:17:33.754 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_vs/browserLink - null null
+2025-02-24 04:17:33.779 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 28.2117ms
+2025-02-24 04:17:33.779 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/index.html - 200 null text/html;charset=utf-8 546.3666ms
+2025-02-24 04:17:33.937 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_vs/browserLink - 200 null text/javascript; charset=UTF-8 183.0391ms
+2025-02-24 04:17:34.458 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - null null
+2025-02-24 04:17:34.605 -08:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 141.0847 ms
+2025-02-24 04:17:34.608 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 150.0395ms
+2025-02-24 04:25:28.686 -08:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-24 04:25:28.814 -08:00 [WRN] The foreign key property 'ArticleComment.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:25:28.829 -08:00 [WRN] The foreign key property 'ArticleRating.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:25:28.833 -08:00 [WRN] The foreign key property 'ArticleView.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 04:25:29.787 -08:00 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 04:25:29.869 -08:00 [INF] Executed DbCommand (44ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 04:25:29.952 -08:00 [INF] Executed DbCommand (73ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 04:25:29.963 -08:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 04:25:30.016 -08:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-02-24 04:25:30.069 -08:00 [INF] No migrations were applied. The database is already up to date.
+2025-02-24 04:25:30.179 -08:00 [INF] User profile is available. Using 'C:\Users\HP\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 04:25:30.883 -08:00 [INF] Executed DbCommand (45ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:25:31.033 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='PATIENT' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:25:31.041 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='PRACTITIONER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 04:25:31.074 -08:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedEmail_0='ADMIN@HEALTHTRIAGE.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[BloodGroup], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[DOB], [a].[DeletedDate], [a].[Email], [a].[EmailConfirmed], [a].[EmergencyContact], [a].[FullName], [a].[Gender], [a].[Height], [a].[LastActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[ModifiedDate], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[Weight], [a].[ZipCode]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 04:25:31.334 -08:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Languages] AS [l]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 04:25:31.361 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Countries] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 04:25:32.001 -08:00 [INF] Now listening on: https://localhost:7005
+2025-02-24 04:25:32.003 -08:00 [INF] Now listening on: http://localhost:5000
+2025-02-24 04:25:32.211 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 04:25:32.213 -08:00 [INF] Hosting environment: Development
+2025-02-24 04:25:32.214 -08:00 [INF] Content root path: C:\Users\HP\OneDrive\Desktop\HealthTriage-master\API
+2025-02-24 04:25:33.093 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/index.html - null null
+2025-02-24 04:25:33.526 -08:00 [INF] HTTP GET /swagger/index.html responded 200 in 177.9844 ms
+2025-02-24 04:25:33.538 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 04:25:33.538 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_vs/browserLink - null null
+2025-02-24 04:25:33.550 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/index.html - 200 null text/html;charset=utf-8 472.6149ms
+2025-02-24 04:25:33.562 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 22.1455ms
+2025-02-24 04:25:33.638 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_vs/browserLink - 200 null text/javascript; charset=UTF-8 99.1758ms
+2025-02-24 04:25:34.110 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - null null
+2025-02-24 04:25:34.274 -08:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 157.7805 ms
+2025-02-24 04:25:34.283 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 173.7986ms
+2025-02-24 13:51:36.069 -08:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-24 13:51:36.227 -08:00 [WRN] The foreign key property 'ArticleComment.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 13:51:36.239 -08:00 [WRN] The foreign key property 'ArticleRating.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 13:51:36.241 -08:00 [WRN] The foreign key property 'ArticleView.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 13:51:46.579 -08:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-24 13:51:46.706 -08:00 [WRN] The foreign key property 'ArticleComment.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 13:51:46.721 -08:00 [WRN] The foreign key property 'ArticleRating.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 13:51:46.722 -08:00 [WRN] The foreign key property 'ArticleView.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 13:51:47.319 -08:00 [WRN] The foreign key property 'ArticleComment.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 13:51:47.320 -08:00 [WRN] The foreign key property 'ArticleRating.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 13:51:47.322 -08:00 [WRN] The foreign key property 'ArticleView.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 13:52:59.851 -08:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-24 13:52:59.969 -08:00 [WRN] The foreign key property 'ArticleComment.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 13:52:59.977 -08:00 [WRN] The foreign key property 'ArticleRating.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 13:52:59.979 -08:00 [WRN] The foreign key property 'ArticleView.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 13:53:00.687 -08:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 13:53:00.745 -08:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 13:53:00.751 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 13:53:00.753 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 13:53:00.775 -08:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-02-24 13:53:00.803 -08:00 [INF] Applying migration '20250224215224_UpdateMedicalLog'.
+2025-02-24 13:53:00.962 -08:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [MedicalActivityLogs] ADD [UserType] int NOT NULL DEFAULT 0;
+2025-02-24 13:53:00.966 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20250224215224_UpdateMedicalLog', N'8.0.11');
+2025-02-24 14:10:40.405 -08:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-24 14:10:40.516 -08:00 [WRN] The foreign key property 'ArticleComment.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 14:10:40.527 -08:00 [WRN] The foreign key property 'ArticleRating.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 14:10:40.534 -08:00 [WRN] The foreign key property 'ArticleView.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 14:10:41.780 -08:00 [INF] Executed DbCommand (50ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 14:10:41.871 -08:00 [INF] Executed DbCommand (59ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 14:10:41.899 -08:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 14:10:41.908 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 14:10:41.963 -08:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-02-24 14:10:42.008 -08:00 [INF] No migrations were applied. The database is already up to date.
+2025-02-24 14:10:42.137 -08:00 [INF] User profile is available. Using 'C:\Users\HP\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 14:10:42.832 -08:00 [INF] Executed DbCommand (52ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 14:10:42.973 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='PATIENT' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 14:10:42.981 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='PRACTITIONER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 14:10:43.022 -08:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedEmail_0='ADMIN@HEALTHTRIAGE.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[BloodGroup], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[DOB], [a].[DeletedDate], [a].[Email], [a].[EmailConfirmed], [a].[EmergencyContact], [a].[FullName], [a].[Gender], [a].[Height], [a].[LastActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[ModifiedDate], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[Weight], [a].[ZipCode]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 14:10:43.262 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Languages] AS [l]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 14:10:43.298 -08:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Countries] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 14:10:44.143 -08:00 [INF] Now listening on: https://localhost:7005
+2025-02-24 14:10:44.159 -08:00 [INF] Now listening on: http://localhost:5000
+2025-02-24 14:10:44.471 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 14:10:44.506 -08:00 [INF] Hosting environment: Development
+2025-02-24 14:10:44.526 -08:00 [INF] Content root path: C:\Users\HP\OneDrive\Desktop\HealthTriage-master\API
+2025-02-24 14:10:44.885 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/index.html - null null
+2025-02-24 14:10:45.421 -08:00 [INF] HTTP GET /swagger/index.html responded 200 in 200.4783 ms
+2025-02-24 14:10:45.437 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/index.html - 200 null text/html;charset=utf-8 569.5783ms
+2025-02-24 14:10:45.456 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 14:10:45.456 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_vs/browserLink - null null
+2025-02-24 14:10:45.482 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 26.0951ms
+2025-02-24 14:10:45.580 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_vs/browserLink - 200 null text/javascript; charset=UTF-8 123.8077ms
+2025-02-24 14:10:46.144 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - null null
+2025-02-24 14:10:46.347 -08:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 193.7865 ms
+2025-02-24 14:10:46.354 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 211.4643ms
+2025-02-24 21:50:15.446 -08:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-24 21:50:15.639 -08:00 [WRN] The foreign key property 'ArticleComment.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 21:50:15.656 -08:00 [WRN] The foreign key property 'ArticleRating.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 21:50:15.664 -08:00 [WRN] The foreign key property 'ArticleView.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 21:50:16.906 -08:00 [INF] Executed DbCommand (54ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 21:50:16.980 -08:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 21:50:16.992 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 21:50:17.003 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 21:50:17.037 -08:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-02-24 21:50:17.078 -08:00 [INF] No migrations were applied. The database is already up to date.
+2025-02-24 21:50:17.171 -08:00 [INF] User profile is available. Using 'C:\Users\HP\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 21:50:17.934 -08:00 [INF] Executed DbCommand (48ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 21:50:18.047 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='PATIENT' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 21:50:18.056 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='PRACTITIONER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 21:50:18.096 -08:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedEmail_0='ADMIN@HEALTHTRIAGE.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[BloodGroup], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[DOB], [a].[DeletedDate], [a].[Email], [a].[EmailConfirmed], [a].[EmergencyContact], [a].[FullName], [a].[Gender], [a].[Height], [a].[LastActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[ModifiedDate], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[Weight], [a].[ZipCode]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 21:50:18.331 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Languages] AS [l]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 21:50:18.361 -08:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Countries] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 21:50:19.253 -08:00 [INF] Now listening on: https://localhost:7005
+2025-02-24 21:50:19.254 -08:00 [INF] Now listening on: http://localhost:5000
+2025-02-24 21:50:19.475 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 21:50:19.477 -08:00 [INF] Hosting environment: Development
+2025-02-24 21:50:19.478 -08:00 [INF] Content root path: C:\Users\HP\OneDrive\Desktop\HealthTriage-master\API
+2025-02-24 21:50:20.207 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/index.html - null null
+2025-02-24 21:50:20.707 -08:00 [INF] HTTP GET /swagger/index.html responded 200 in 176.1917 ms
+2025-02-24 21:50:20.754 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 21:50:20.755 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_vs/browserLink - null null
+2025-02-24 21:50:20.767 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/index.html - 200 null text/html;charset=utf-8 582.8152ms
+2025-02-24 21:50:20.794 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 40.1755ms
+2025-02-24 21:50:20.879 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_vs/browserLink - 200 null text/javascript; charset=UTF-8 123.8713ms
+2025-02-24 21:50:21.316 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - null null
+2025-02-24 21:50:21.490 -08:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 166.8791 ms
+2025-02-24 21:50:21.497 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 181.936ms
+2025-02-24 21:58:52.419 -08:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-24 21:58:52.548 -08:00 [WRN] The foreign key property 'ArticleComment.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 21:58:52.566 -08:00 [WRN] The foreign key property 'ArticleRating.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 21:58:52.572 -08:00 [WRN] The foreign key property 'ArticleView.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 21:58:53.668 -08:00 [INF] Executed DbCommand (48ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 21:58:53.775 -08:00 [INF] Executed DbCommand (61ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 21:58:53.795 -08:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 21:58:53.801 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 21:58:53.838 -08:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-02-24 21:58:53.875 -08:00 [INF] No migrations were applied. The database is already up to date.
+2025-02-24 21:58:53.971 -08:00 [INF] User profile is available. Using 'C:\Users\HP\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 21:58:54.640 -08:00 [INF] Executed DbCommand (40ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 21:58:54.784 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='PATIENT' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 21:58:54.792 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='PRACTITIONER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 21:58:54.828 -08:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedEmail_0='ADMIN@HEALTHTRIAGE.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[BloodGroup], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[DOB], [a].[DeletedDate], [a].[Email], [a].[EmailConfirmed], [a].[EmergencyContact], [a].[FullName], [a].[Gender], [a].[Height], [a].[LastActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[ModifiedDate], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[Weight], [a].[ZipCode]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 21:58:55.032 -08:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Languages] AS [l]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 21:58:55.057 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Countries] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 21:58:55.662 -08:00 [INF] Now listening on: https://localhost:7005
+2025-02-24 21:58:55.664 -08:00 [INF] Now listening on: http://localhost:5000
+2025-02-24 21:58:55.932 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 21:58:55.935 -08:00 [INF] Hosting environment: Development
+2025-02-24 21:58:55.938 -08:00 [INF] Content root path: C:\Users\HP\OneDrive\Desktop\HealthTriage-master\API
+2025-02-24 21:58:56.372 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/index.html - null null
+2025-02-24 21:58:56.876 -08:00 [INF] HTTP GET /swagger/index.html responded 200 in 187.7477 ms
+2025-02-24 21:58:56.914 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_vs/browserLink - null null
+2025-02-24 21:58:56.914 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 21:58:56.926 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/index.html - 200 null text/html;charset=utf-8 575.8768ms
+2025-02-24 21:58:56.968 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 54.5325ms
+2025-02-24 21:58:57.139 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_vs/browserLink - 200 null text/javascript; charset=UTF-8 225.4734ms
+2025-02-24 21:58:57.658 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - null null
+2025-02-24 21:58:57.914 -08:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 250.1685 ms
+2025-02-24 21:58:57.921 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 264.3299ms
+2025-02-24 22:01:17.900 -08:00 [INF] Request starting HTTP/2 POST https://localhost:7005/api/auth/registerPractitioner - multipart/form-data; boundary=----WebKitFormBoundarysARdHzHxFUdaC7Y8 436107
+2025-02-24 22:01:17.938 -08:00 [INF] CORS policy execution successful.
+2025-02-24 22:01:17.953 -08:00 [INF] Executing endpoint 'Infrastructure.Controllers.AuthenticationController.AddPractitioner (API)'
+2025-02-24 22:01:18.004 -08:00 [INF] Route matched with {action = "AddPractitioner", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Core.Results.IResult]] AddPractitioner(Common.Models.PractitionerRequest) on controller Infrastructure.Controllers.AuthenticationController (API).
+2025-02-24 22:01:21.911 -08:00 [INF] About Saving new Practitioner with Request {"UserId":"01JMSN2WKVGSK18PHM103YM6TB","PractitionerTitle":"Dr","PractitionerName":"Dr. David Mboko","MedicalLicenseNumber":"MD312234","Experience":"4","Institution":"University of Abuja Teaching Hospital","WorkAddress":"University of Abuja Teaching Hospital, Oge Road, Abuja","WorkEmail":"mbokodavid@ethu.edu.ng","GovernmentId":"md34555","ApplicationCertificate":{"ContentDisposition":"form-data; name=\"ApplicationCertificate\"; filename=\"My Passport (2).png\"","ContentType":"image/png","Headers":{"Content-Disposition":["form-data; name=\"ApplicationCertificate\"; filename=\"My Passport (2).png\""],"Content-Type":["image/png"]},"Length":434830,"Name":"ApplicationCertificate","FileName":"My Passport (2).png"}
+2025-02-24 22:01:22.165 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='01JMSN2WKVGSK18PHM103YM6TB' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[BloodGroup], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[DOB], [a].[DeletedDate], [a].[Email], [a].[EmailConfirmed], [a].[EmergencyContact], [a].[FullName], [a].[Gender], [a].[Height], [a].[LastActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[ModifiedDate], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[Weight], [a].[ZipCode]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-02-24 22:01:22.175 -08:00 [INF] User not found for email: 01JMSN2WKVGSK18PHM103YM6TB
+2025-02-24 22:01:22.205 -08:00 [INF] Executing OkObjectResult, writing value of type 'Core.Results.ErrorDataResult`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-02-24 22:01:22.229 -08:00 [INF] Executed action Infrastructure.Controllers.AuthenticationController.AddPractitioner (API) in 4211.0632ms
+2025-02-24 22:01:22.233 -08:00 [INF] Executed endpoint 'Infrastructure.Controllers.AuthenticationController.AddPractitioner (API)'
+2025-02-24 22:01:22.237 -08:00 [INF] HTTP POST /api/auth/registerPractitioner responded 200 in 4294.1366 ms
+2025-02-24 22:01:22.258 -08:00 [INF] Request finished HTTP/2 POST https://localhost:7005/api/auth/registerPractitioner - 200 null application/json; charset=utf-8 4358.3824ms
+2025-02-24 22:02:14.815 -08:00 [INF] Request starting HTTP/2 POST https://localhost:7005/api/auth/registerPractitioner - multipart/form-data; boundary=----WebKitFormBoundaryPvjtMaPDg9iui7BX 436107
+2025-02-24 22:02:14.837 -08:00 [INF] CORS policy execution successful.
+2025-02-24 22:02:14.839 -08:00 [INF] Executing endpoint 'Infrastructure.Controllers.AuthenticationController.AddPractitioner (API)'
+2025-02-24 22:02:14.842 -08:00 [INF] Route matched with {action = "AddPractitioner", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Core.Results.IResult]] AddPractitioner(Common.Models.PractitionerRequest) on controller Infrastructure.Controllers.AuthenticationController (API).
+2025-02-24 22:02:20.724 -08:00 [INF] About Saving new Practitioner with Request {"UserId":"01JMSN2WKVGSK18PHM103YM6TB","PractitionerTitle":"Dr","PractitionerName":"Dr. David Mboko","MedicalLicenseNumber":"MD312234","Experience":"4","Institution":"University of Abuja Teaching Hospital","WorkAddress":"University of Abuja Teaching Hospital, Oge Road, Abuja","WorkEmail":"mbokodavid@ethu.edu.ng","GovernmentId":"md34555","ApplicationCertificate":{"ContentDisposition":"form-data; name=\"ApplicationCertificate\"; filename=\"My Passport (2).png\"","ContentType":"image/png","Headers":{"Content-Disposition":["form-data; name=\"ApplicationCertificate\"; filename=\"My Passport (2).png\""],"Content-Type":["image/png"]},"Length":434830,"Name":"ApplicationCertificate","FileName":"My Passport (2).png"}
+2025-02-24 22:02:39.126 -08:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='01JMSN2WKVGSK18PHM103YM6TB' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[BloodGroup], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[DOB], [a].[DeletedDate], [a].[Email], [a].[EmailConfirmed], [a].[EmergencyContact], [a].[FullName], [a].[Gender], [a].[Height], [a].[LastActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[ModifiedDate], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[Weight], [a].[ZipCode]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-02-24 22:04:30.856 -08:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-24 22:04:30.970 -08:00 [WRN] The foreign key property 'ArticleComment.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 22:04:30.987 -08:00 [WRN] The foreign key property 'ArticleRating.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 22:04:30.994 -08:00 [WRN] The foreign key property 'ArticleView.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 22:04:32.086 -08:00 [INF] Executed DbCommand (59ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 22:04:32.166 -08:00 [INF] Executed DbCommand (43ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 22:04:32.187 -08:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 22:04:32.194 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 22:04:32.243 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-02-24 22:04:32.296 -08:00 [INF] No migrations were applied. The database is already up to date.
+2025-02-24 22:04:32.396 -08:00 [INF] User profile is available. Using 'C:\Users\HP\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 22:04:33.186 -08:00 [INF] Executed DbCommand (43ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 22:04:33.353 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='PATIENT' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 22:04:33.363 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='PRACTITIONER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 22:04:33.430 -08:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedEmail_0='ADMIN@HEALTHTRIAGE.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[BloodGroup], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[DOB], [a].[DeletedDate], [a].[Email], [a].[EmailConfirmed], [a].[EmergencyContact], [a].[FullName], [a].[Gender], [a].[Height], [a].[LastActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[ModifiedDate], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[Weight], [a].[ZipCode]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 22:04:33.725 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Languages] AS [l]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 22:04:33.764 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Countries] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 22:04:34.628 -08:00 [INF] Now listening on: https://localhost:7005
+2025-02-24 22:04:34.630 -08:00 [INF] Now listening on: http://localhost:5000
+2025-02-24 22:04:35.038 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 22:04:35.040 -08:00 [INF] Hosting environment: Development
+2025-02-24 22:04:35.042 -08:00 [INF] Content root path: C:\Users\HP\OneDrive\Desktop\HealthTriage-master\API
+2025-02-24 22:04:35.252 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/index.html - null null
+2025-02-24 22:04:35.823 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 22:04:35.837 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_vs/browserLink - null null
+2025-02-24 22:04:35.828 -08:00 [INF] HTTP GET /swagger/index.html responded 200 in 245.3363 ms
+2025-02-24 22:04:35.862 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 33.5862ms
+2025-02-24 22:04:35.866 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/index.html - 200 null text/html;charset=utf-8 640.4292ms
+2025-02-24 22:04:36.007 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_vs/browserLink - 200 null text/javascript; charset=UTF-8 170.0319ms
+2025-02-24 22:04:36.547 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - null null
+2025-02-24 22:04:36.848 -08:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 295.1247 ms
+2025-02-24 22:04:36.854 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 307.6393ms
+2025-02-24 22:05:20.040 -08:00 [INF] Request starting HTTP/2 POST https://localhost:7005/api/auth/registerPractitioner - multipart/form-data; boundary=----WebKitFormBoundary9qWylAjgS0Q53oik 436023
+2025-02-24 22:05:20.072 -08:00 [INF] CORS policy execution successful.
+2025-02-24 22:05:20.087 -08:00 [INF] Executing endpoint 'Infrastructure.Controllers.AuthenticationController.AddPractitioner (API)'
+2025-02-24 22:05:20.138 -08:00 [INF] Route matched with {action = "AddPractitioner", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Core.Results.IResult]] AddPractitioner(Common.Models.PractitionerRequest) on controller Infrastructure.Controllers.AuthenticationController (API).
+2025-02-24 22:05:26.486 -08:00 [INF] About Saving new Practitioner with Request {"UserId":"01JMSN2WKVGSK18PHM103YM6TB","PractitionerTitle":"wdfegrty","PractitionerName":"rtgyu","MedicalLicenseNumber":"3rfg4tyt","Experience":"4rgt5y6u","Institution":"3r4t5yhu6","WorkAddress":"r34ty5h","WorkEmail":"r4tg5yh6u","GovernmentId":"r34t5yhu","ApplicationCertificate":{"ContentDisposition":"form-data; name=\"ApplicationCertificate\"; filename=\"My Passport (5).png\"","ContentType":"image/png","Headers":{"Content-Disposition":["form-data; name=\"ApplicationCertificate\"; filename=\"My Passport (5).png\""],"Content-Type":["image/png"]},"Length":434830,"Name":"ApplicationCertificate","FileName":"My Passport (5).png"}
+2025-02-24 22:05:26.685 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='01JMSN2WKVGSK18PHM103YM6TB' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[BloodGroup], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[DOB], [a].[DeletedDate], [a].[Email], [a].[EmailConfirmed], [a].[EmergencyContact], [a].[FullName], [a].[Gender], [a].[Height], [a].[LastActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[ModifiedDate], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[Weight], [a].[ZipCode]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-02-24 22:10:53.422 -08:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2025-02-24 22:10:53.560 -08:00 [WRN] The foreign key property 'ArticleComment.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 22:10:53.578 -08:00 [WRN] The foreign key property 'ArticleRating.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 22:10:53.583 -08:00 [WRN] The foreign key property 'ArticleView.ArticleId1' was created in shadow state because a conflicting property with the simple name 'ArticleId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-24 22:10:54.455 -08:00 [INF] Executed DbCommand (42ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 22:10:54.533 -08:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 22:10:54.550 -08:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-02-24 22:10:54.556 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-02-24 22:10:54.598 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-02-24 22:10:54.656 -08:00 [INF] No migrations were applied. The database is already up to date.
+2025-02-24 22:10:54.764 -08:00 [INF] User profile is available. Using 'C:\Users\HP\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 22:10:55.587 -08:00 [INF] Executed DbCommand (44ms) [Parameters=[@__normalizedName_0='ADMIN' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 22:10:55.724 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='PATIENT' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 22:10:55.734 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='PRACTITIONER' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-24 22:10:55.810 -08:00 [INF] Executed DbCommand (8ms) [Parameters=[@__normalizedEmail_0='ADMIN@HEALTHTRIAGE.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[BloodGroup], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[DOB], [a].[DeletedDate], [a].[Email], [a].[EmailConfirmed], [a].[EmergencyContact], [a].[FullName], [a].[Gender], [a].[Height], [a].[LastActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[ModifiedDate], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[Weight], [a].[ZipCode]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 22:10:56.090 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Languages] AS [l]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 22:10:56.131 -08:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Countries] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-02-24 22:10:56.951 -08:00 [INF] Now listening on: https://localhost:7005
+2025-02-24 22:10:56.952 -08:00 [INF] Now listening on: http://localhost:5000
+2025-02-24 22:10:57.186 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 22:10:57.188 -08:00 [INF] Hosting environment: Development
+2025-02-24 22:10:57.190 -08:00 [INF] Content root path: C:\Users\HP\OneDrive\Desktop\HealthTriage-master\API
+2025-02-24 22:10:58.099 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/index.html - null null
+2025-02-24 22:10:58.551 -08:00 [INF] HTTP GET /swagger/index.html responded 200 in 160.7518 ms
+2025-02-24 22:10:58.568 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 22:10:58.569 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/index.html - 200 null text/html;charset=utf-8 492.8017ms
+2025-02-24 22:10:58.580 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/_vs/browserLink - null null
+2025-02-24 22:10:58.641 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 74.4213ms
+2025-02-24 22:10:58.756 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/_vs/browserLink - 200 null text/javascript; charset=UTF-8 176.292ms
+2025-02-24 22:10:59.219 -08:00 [INF] Request starting HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - null null
+2025-02-24 22:10:59.446 -08:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 221.1352 ms
+2025-02-24 22:10:59.451 -08:00 [INF] Request finished HTTP/2 GET https://localhost:7005/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 232.6535ms
+2025-02-24 22:11:34.800 -08:00 [INF] Request starting HTTP/2 POST https://localhost:7005/api/auth/registerPractitioner - multipart/form-data; boundary=----WebKitFormBoundaryRD31vGa0J3EOc6wT 436039
+2025-02-24 22:11:34.833 -08:00 [INF] CORS policy execution successful.
+2025-02-24 22:11:34.848 -08:00 [INF] Executing endpoint 'Infrastructure.Controllers.AuthenticationController.AddPractitioner (API)'
+2025-02-24 22:11:34.900 -08:00 [INF] Route matched with {action = "AddPractitioner", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Core.Results.IResult]] AddPractitioner(Common.Models.PractitionerRequest) on controller Infrastructure.Controllers.AuthenticationController (API).
+2025-02-24 22:11:36.006 -08:00 [INF] About Saving new Practitioner with Request {"UserId":"01JMSN2WKVGSK18PHM103YM6TB","PractitionerTitle":"trgfdv","PractitionerName":"rghtyu6nbgtr","MedicalLicenseNumber":"juy6nhtbgrvfr","Experience":"ikmujyhntg","Institution":"uynhtbgvfrdc","WorkAddress":"jy htbgvrfde","WorkEmail":"unyhbtgrf","GovernmentId":"ujyhtgrf","ApplicationCertificate":{"ContentDisposition":"form-data; name=\"ApplicationCertificate\"; filename=\"My Passport.png\"","ContentType":"image/png","Headers":{"Content-Disposition":["form-data; name=\"ApplicationCertificate\"; filename=\"My Passport.png\""],"Content-Type":["image/png"]},"Length":434830,"Name":"ApplicationCertificate","FileName":"My Passport.png"}
+2025-02-24 22:11:36.173 -08:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[BloodGroup], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[DOB], [a].[DeletedDate], [a].[Email], [a].[EmailConfirmed], [a].[EmergencyContact], [a].[FullName], [a].[Gender], [a].[Height], [a].[LastActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[ModifiedDate], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[Weight], [a].[ZipCode]
+FROM [AspNetUsers] AS [a]
+2025-02-24 22:11:36.273 -08:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='01JMSN2WKVGSK18PHM103YM6TB' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[BloodGroup], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[DOB], [a].[DeletedDate], [a].[Email], [a].[EmailConfirmed], [a].[EmergencyContact], [a].[FullName], [a].[Gender], [a].[Height], [a].[LastActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[ModifiedDate], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[Weight], [a].[ZipCode]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2025-02-24 22:12:13.669 -08:00 [INF] User not found for email: 01JMSN2WKVGSK18PHM103YM6TB
+2025-02-24 22:12:13.732 -08:00 [INF] Executing OkObjectResult, writing value of type 'Core.Results.ErrorDataResult`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-02-24 22:12:13.752 -08:00 [INF] Executed action Infrastructure.Controllers.AuthenticationController.AddPractitioner (API) in 38836.7431ms
+2025-02-24 22:12:13.757 -08:00 [INF] Executed endpoint 'Infrastructure.Controllers.AuthenticationController.AddPractitioner (API)'
+2025-02-24 22:12:13.761 -08:00 [INF] HTTP POST /api/auth/registerPractitioner responded 200 in 38923.1378 ms
+2025-02-24 22:12:13.776 -08:00 [INF] Request finished HTTP/2 POST https://localhost:7005/api/auth/registerPractitioner - 200 null application/json; charset=utf-8 38975.4312ms
+2025-02-24 22:13:56.374 -08:00 [INF] Request starting HTTP/2 POST https://localhost:7005/api/auth/login - application/json 73
+2025-02-24 22:13:56.394 -08:00 [INF] CORS policy execution successful.
+2025-02-24 22:13:56.396 -08:00 [INF] Executing endpoint 'Infrastructure.Controllers.AuthenticationController.Login (API)'
+2025-02-24 22:13:56.408 -08:00 [INF] Route matched with {action = "Login", controller = "Authentication"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Common.Models.IDataResult`1[Common.Models.Token]]] Login(Common.Models.UserLoginRequest) on controller Infrastructure.Controllers.AuthenticationController (API).
+2025-02-24 22:13:56.743 -08:00 [INF] Attempting sign-in for Email: mbokodavid@gmail.com
+2025-02-24 22:13:56.760 -08:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedEmail_0='MBOKODAVID@GMAIL.COM' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[BloodGroup], [a].[ConcurrencyStamp], [a].[CreatedDate], [a].[DOB], [a].[DeletedDate], [a].[Email], [a].[EmailConfirmed], [a].[EmergencyContact], [a].[FullName], [a].[Gender], [a].[Height], [a].[LastActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[ModifiedDate], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[Phone], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[ProfilePicture], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[Weight], [a].[ZipCode]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-02-24 22:14:47.329 -08:00 [INF] Login failed for Email: mbokodavid@gmail.com
+2025-02-24 22:14:47.355 -08:00 [INF] Executing OkObjectResult, writing value of type 'Core.Results.ErrorDataResult`1[[Common.Models.Token, Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-24 22:14:47.374 -08:00 [INF] Executed action Infrastructure.Controllers.AuthenticationController.Login (API) in 50961.4047ms
+2025-02-24 22:14:47.377 -08:00 [INF] Executed endpoint 'Infrastructure.Controllers.AuthenticationController.Login (API)'
+2025-02-24 22:14:47.378 -08:00 [INF] HTTP POST /api/auth/login responded 200 in 50982.4448 ms
+2025-02-24 22:14:47.384 -08:00 [INF] Request finished HTTP/2 POST https://localhost:7005/api/auth/login - 200 null application/json; charset=utf-8 51009.9836ms

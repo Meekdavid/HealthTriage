@@ -12,6 +12,7 @@ namespace Common.DTOs
         public string UserId { get; set; }
         public string Details { get; set; }
         public string ActivityType { get; set; } // Enum will be returned as a string
+        public DateTime TimeOfAction { get; set; }
     }
 
 }

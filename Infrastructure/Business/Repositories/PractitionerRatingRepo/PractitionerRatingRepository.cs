@@ -1,4 +1,4 @@
-﻿using Domain.Interfaces;
+﻿using Domain.Interfaces.Database;
 using Infrastructure.DataAccess.Repositories;
 using Persistence.DBContext;
 using Persistence.DBModels;

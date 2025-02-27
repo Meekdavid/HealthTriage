@@ -37,6 +37,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Google;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
+using Domain.Interfaces.Database;
 
 namespace Common.ServiceCollectionExtensions
 {

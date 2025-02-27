@@ -192,8 +192,18 @@ using System.Reflection;
 using Common.FluentValidators;
 using FluentValidation;
 using Newtonsoft.Json;
-using Domain.Interfaces.PractitionerBusiness;
 using Infrastructure.Business.Repositories.PractitionerRepo;
+using Infrastructure.Business.Repositories.PractitionerRatingRepo;
+using Domain.Interfaces.Database;
+using Domain.Interfaces.Business;
+using Infrastructure.Business.Repositories.MedicalActivitiesRepo;
+using Infrastructure.Business.Repositories.ConsultationHistoryBusiness;
+using Infrastructure.Business.Repositories.SymptomSearchHistoryBusinessRepo;
+using Infrastructure.Business.Repositories.HealthFacilityRepo;
+using Microsoft.OpenApi.Interfaces;
+using Infrastructure.Business.Repositories.DropDownRepo;
+using Infrastructure.Business.Repositories.ArticleRepo;
+using Infrastructure.Business.Repositories.FAQRepo;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -234,6 +244,31 @@ builder.Services.AddTransient<IUserManager, AppUserManager>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IPractitionerRepository, PractitionerRepository>();
 builder.Services.AddTransient<IpractitioerBusiness, practitioerBusiness>();
+builder.Services.AddTransient<IMedicalActivityRepository, MedicalActivityRepository>();
+builder.Services.AddTransient<IPractitionerRatingRepository, PractitionerRatingRepository>();
+builder.Services.AddTransient<IAdminRepository, AdminRepository>();
+builder.Services.AddTransient<ITreatmentOptionsRepository, TreatmentOptionsRepository>();
+builder.Services.AddTransient<ISymptomSearchHistoryRepository, SymptomSearchHistoryRepository>();
+builder.Services.AddTransient<IsymptomsRepository, symptomsRepository>();
+builder.Services.AddTransient<IHealthFacilityRepository, HealthFacilityRepository>();
+builder.Services.AddTransient<IConsultationHistoryRepository, ConsultationHistoryRepository>();
+builder.Services.AddTransient<IConsultancyChatRepository, ConsultancyChatRepository>();
+builder.Services.AddTransient<ICommentReplyRepository, CommentReplyRepository>();
+builder.Services.AddTransient<IArticleViewRepository, ArticleViewRepository>();
+builder.Services.AddTransient<IArticleRatingRepository, ArticleRatingRepository>();
+builder.Services.AddTransient<IArticleCommentRepository, ArticleCommentRepository>();
+builder.Services.AddTransient<IArticleRepository, ArticleRepository>();
+builder.Services.AddTransient<IMedicalActivityBusiness, MedicalActivityBusiness>();
+builder.Services.AddTransient<IConsultationHistoryBusiness, ConsultationHistoryBusiness>();
+builder.Services.AddTransient<ISymptomSearchHistoryBusiness, SymptomSearchHistoryBusiness>();
+builder.Services.AddTransient<IHealthFacilityBusiness, HealthFacilityBusiness>();
+builder.Services.AddTransient<IApiClient, ApiClient>();
+builder.Services.AddTransient<IDropdownBusiness, DropdownBusiness>();
+builder.Services.AddTransient<ICountryRepository, CountryRepository>();
+builder.Services.AddTransient<ILanguageRepository, LanguageRepository>();
+builder.Services.AddTransient<IArticleBusiness, ArticleBusiness>();
+builder.Services.AddTransient<IFAQBusiness, FAQBusiness>();
+builder.Services.AddTransient<IFAQRepository, FAQRepository>();
 
 builder.Services.AddLogging(loggingBuilder =>
 {
@@ -288,7 +323,26 @@ builder.Services.AddEndpointsApiExplorer();
 // Configure Swagger
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "HealthTriage", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "HealthTriage",
+        Description = "API documentation for HealthTriage system.",
+        Version = "v1",
+        TermsOfService = new Uri("https://your-terms-of-service-url.com"),
+        Contact = new OpenApiContact
+        {
+            Name = "Support Team",
+            Email = "support@healthtriagen.com",
+            Url = new Uri("https://healthtriagen.com/contact")
+        },
+        License = new OpenApiLicense
+        {
+            Name = "MIT License",
+            Url = new Uri("https://opensource.org/licenses/MIT")
+        },
+        Extensions = new Dictionary<string, IOpenApiExtension>()
+    });
+
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     if (File.Exists(xmlPath))
@@ -411,7 +465,12 @@ using (var scope = app.Services.CreateScope())
 
         // Swagger UI
         app.UseSwagger();
-        app.UseSwaggerUI();
+        //app.UseSwaggerUI();
+        //app.UseSwaggerUI(c =>
+        //{
+        //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1");
+        //});
+        app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });
 
         app.UseStaticFiles();
         app.UseHttpsRedirection();

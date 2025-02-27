@@ -1,5 +1,4 @@
 ﻿using Common.Pagination;
-using Domain.Interfaces;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Enums;
@@ -11,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Persistence.Concrete;
 using Persistence.DBContext;
+using Domain.Interfaces.Database;
 
 namespace Infrastructure.DataAccess.Repositories
 {

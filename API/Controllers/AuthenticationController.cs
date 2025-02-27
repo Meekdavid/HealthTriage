@@ -3,6 +3,7 @@ using Common.DTOs;
 using Common.Models;
 using Core.Results;
 using Domain.Interfaces;
+using Domain.Interfaces.Business;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,11 +17,13 @@ namespace Infrastructure.Controllers
     {
         private readonly IUserManager _userManager;
         private readonly IUserContextManager _userContextService;
-        public AuthenticationController(IUserManager userManager, IUserContextManager userContextService)
+        private readonly IpractitioerBusiness _practitionerService;
+        public AuthenticationController(IUserManager userManager, IUserContextManager userContextService, IpractitioerBusiness practitionerService)
         {
             _userManager = userManager;
             _userContextService = userContextService;
-        }        
+            _practitionerService = practitionerService;
+        }
 
         /// <summary>
         /// Registers a new user on HealthTriage.
@@ -63,7 +66,7 @@ namespace Infrastructure.Controllers
         /// <remarks>
         /// **Endpoint:** `POST /api/auth/login`  
         ///  
-        /// If the login is successful, a new token is generated, and the user's refresh token is updated.  
+        /// If the login is successful, a new token is generated, and the user's refresh token is updated. **This login token must passed as a Bearer Token when consuming other endpoints**
         ///
         /// **Responses Codes:**  
         /// - **200** → 00 - Request Successful  
@@ -81,6 +84,31 @@ namespace Infrastructure.Controllers
         public async Task<ActionResult<IDataResult<Token>>> Login([FromBody] UserLoginRequest userModel)
         {
             var result = await _userManager.SignInAsync(userModel.Email, userModel.Password);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Registers a practitioner.
+        /// </summary>
+        /// <remarks>
+        /// **Endpoint:** `POST /api/auth/registerPractitioner`  
+        ///  
+        /// The client must send practitioner details as `multipart/form-data`. **Only Valid Users can Register as Practitioner** 
+        ///
+        /// **Response Codes:**  
+        /// - **200** → 00 - Practitioner added successfully  
+        /// - **200** → 14 - Invalid input  
+        /// - **200** → 19 - User not found  
+        /// - **200** → 09 - Exception Occurred, Contact Developer  
+        /// </remarks>
+        [HttpPost("registerPractitioner")]
+        [Consumes("multipart/form-data")]
+        [ProducesResponseType(typeof(SuccessDataResult<string>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorDataResult<string>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ErrorDataResult<string>), StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<Core.Results.IResult>> AddPractitioner([FromForm] PractitionerRequest request)
+        {
+            var result = await _practitionerService.AddPractitioner(request, HttpContext);
             return Ok(result);
         }
 

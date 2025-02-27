@@ -20,7 +20,8 @@ namespace Common.DTOs
         public string WorkEmail { get; set; }
         public string GovernmentId { get; set; }
         public string ApplicationCertificateUrl { get; set; }
-        public int? Rating { get; set; } // Nullable to handle rating absence
+        public double? Rating { get; set; }
+        public int? TotalRating { get; set; }
     }
 
 }
