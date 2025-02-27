@@ -27,6 +27,8 @@ public class Article : HealthTriageEntity
     public string? Title { get; set; }
     public string? Content { get; set; }
     public string? ApprovedBy { get; set; }
+    public string?  { get; set; }
+    public string? ApprovedBy { get; set; }
     public ArticleCategory? Category { get; set; }
     public AuthorType? AuthorType { get; set; }
     public ArticleStatus? ArticleState { get; set; }

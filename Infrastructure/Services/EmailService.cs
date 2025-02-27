@@ -16,8 +16,8 @@ namespace Infrastructure.Repositories
         private readonly ILogger<EmailService> _logger;
         private readonly string _smtpServer = ConfigSettings.ApplicationSetting.EmailDetails.SMTPServer;
         private readonly int _smtpPort = ConfigSettings.ApplicationSetting.EmailDetails.Port; // Use 465 for SSL, 587 for TLS
-        private readonly string _smtpUser = AESHelper.Decrypt(ConfigSettings.ApplicationSetting.EmailDetails.UserName) ?? "mbokodavid@gmail.com"/*"MS_WtsoKH@trial-3vz9dlen3r1lkj50.mlsender.net"*/;
-        private readonly string _smtpPass = AESHelper.Decrypt(ConfigSettings.ApplicationSetting.EmailDetails.Password) ?? /*"mssp.Skh7zVF.ynrw7gyqd2n42k8e.djbqXKt"*/ "ednnppsbnlhjykav";
+        private readonly string _smtpUser = AESHelper.Decrypt(ConfigSettings.ApplicationSetting.EmailDetails.UserName) ?? "";
+        private readonly string _smtpPass = AESHelper.Decrypt(ConfigSettings.ApplicationSetting.EmailDetails.Password) ?? "";
         private readonly SmtpClient _smtpClient;
 
         public EmailService(ILogger<EmailService> logger)
